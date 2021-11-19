@@ -20,9 +20,9 @@ function App({store}) {
             key={item.code}
             className={'List__item' + (item.selected ? ' List__item_selected' : '')}
           >
-            <div className='Item' onClick={() => store.selectItem(item.code)}>
+            <div className='Item' onClick={() => {store.selectItem(item.code)}}>
               <div className='Item__number'>{item.code}</div>
-              <div className='Item__title'>{item.title}</div>
+              <div className='Item__title'>{item.title} {item.selections>0 && <span> | Выделялся {item.selections} раз</span> }</div>
               <div className='Item__actions'>
                 <button onClick={() => store.deleteItem(item.code)}>
                   Удалить

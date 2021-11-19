@@ -1,3 +1,5 @@
+import {render} from "react-dom";
+
 class Store {
   constructor(initState) {
     // Состояние приложения (данные)
@@ -65,6 +67,14 @@ class Store {
       items: this.state.items.filter(item => item.code !== code)
     });
   }
+  /**
+   * Функция подсчета выделения элемента */
+  countSelections(item){
+    if (!item.selected && item.selections >=0 ){
+      item.selections= ++item.selections;
+    }
+  }
+
 
   /**
    * Выделение записи по её коду
@@ -74,12 +84,14 @@ class Store {
     this.setState({
       items: this.state.items.map(item => {
         if (item.code === code){
+          this.countSelections(item);
           item.selected = !item.selected;
         }
         return item;
       })
     });
   }
+
 }
 
 export default Store;
