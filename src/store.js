@@ -68,7 +68,9 @@ class Store {
     });
   }
   /**
-   * Функция подсчета выделения элемента */
+   * Функция подсчета выделения элемента
+   * подсчет считается только тогда, когда элемент
+   * выделен синим цветом*/
   countSelections(item){
     if (!item.selected && item.selections >=0 ){
       item.selections= ++item.selections;
