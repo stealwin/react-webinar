@@ -6,6 +6,7 @@ class Store {
     this.state = initState;
     // Подписчики на изменение state
     this.listners = [];
+    this.selects = 0;
   }
 
   /**
@@ -13,6 +14,8 @@ class Store {
    * @param callback {Function}
    */
   subscribe(callback) {
+    //создаем в каждом элементе items поле selections с дефолтным значением
+   this.state.items.map(item => item.selections=0);
     this.listners.push(callback);
     // Возвращаем функцию для отписки
     return () => {
