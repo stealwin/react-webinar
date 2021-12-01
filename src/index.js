@@ -10,14 +10,15 @@ console.log('index.js');
 // Состояние приложения
 const store = new Store({
   items: [
-    {code: 1, title: 'Название элемента'},
-    {code: 2, title: 'Некий объект'},
-    {code: 3, title: 'Заголовок'},
-    {code: 4, title: 'Короткое название'},
-    {code: 5, title: 'Запись'},
-    {code: 6, title: 'Пример названия'},
-    {code: 7, title: 'Седьмой'}
-  ]
+    {code: 1, title: 'Название элемента', price:100, currency: 'P'},
+    {code: 2, title: 'Некий объект',price:120, currency: 'P'},
+    {code: 3, title: 'Заголовок',price:1730, currency: 'P'},
+    {code: 4, title: 'Короткое название',price:920, currency: 'P'},
+    {code: 5, title: 'Запись',price:12, currency: 'P'},
+    {code: 6, title: 'Пример названия',price:140, currency: 'P'},
+    {code: 7, title: 'Седьмой',price:190, currency: 'P'}
+  ],
+  itemsBasket:[]
 });
 
 // Сообщаем реакту что и куда рендерить.

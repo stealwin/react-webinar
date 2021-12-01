@@ -1,11 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import propTypes from 'prop-types';
+import Basket from "../basket";
 import './styles.css';
 
-function Controls({onCreate}){
+function Controls(props){
+  const [modalActive, setModalActive] = useState(false);
+
+  let arr = props.basketItems.map(item => item.price);
+  let reducer  = arr.reduce(function (prev,curr) {
+    return  prev + curr;
+  },0);
   console.log('Controls');
   return <div className='Controls'>
-    <button onClick={onCreate}> Добавить</button>
+    <Basket active={modalActive} setActive={setModalActive} items={props.basketItems}/>
+    <div>В корзине:{props.basketItems.length} товара / {reducer} рубля</div>
+    <button onClick={()=> setModalActive(true)}> Добавить</button>
   </div>
 }
 
@@ -17,4 +26,4 @@ Controls.defaultProps = {
   onCreate: () => {}
 }
 
-export default React.memo(Controls);
+export default Controls;

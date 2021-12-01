@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import plural from 'plural-ru';
 import './styles.css';
 
-function Item({item, onSelect, onDelete}){
+function Item({item, onSelect, addToBasket}){
   console.log('Item', item.title);
 
   const [counter, setCounter] = useState(0);
@@ -24,9 +24,10 @@ function Item({item, onSelect, onDelete}){
         {item.title}
         {counter ? ` | Выделялся ${counter} ${plural(counter, 'раз', 'раза', 'раз')}` : null}
       </div>
+        <div className="Item__price">{item.price} {item.currency}</div>
       <div className='Item__actions'>
-        <button onClick={() => onDelete(item.code)}>
-          Удалить
+        <button onClick={() => addToBasket(item.code)}>
+          Добавить
         </button>
       </div>
     </div>

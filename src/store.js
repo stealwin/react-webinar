@@ -4,6 +4,7 @@ class Store {
     this.state = initState;
     // Подписчики на изменение state
     this.listners = [];
+    this.arr = [];
   }
 
   /**
@@ -64,6 +65,22 @@ class Store {
     this.setState({
       items: this.state.items.filter(item => item.code !== code)
     });
+  }
+
+  addToBasket(code){
+
+    for (const item of this.state.items) {
+      if(item.code == code){
+        this.arr.push(item)
+      }
+    }
+    this.setState({
+      items: this.state.items,
+      itemsBasket:this.arr
+    });
+    console.log(this.state.itemsBasket );
+    console.log(this.state.items );
+
   }
 
   /**
