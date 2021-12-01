@@ -4,6 +4,7 @@ class Store {
     this.state = initState;
     // Подписчики на изменение state
     this.listners = [];
+    //Массив для корзины
     this.arr = [];
   }
 
@@ -66,7 +67,7 @@ class Store {
       items: this.state.items.filter(item => item.code !== code)
     });
   }
-
+//Добавляем товар в корзину
   addToBasket(code){
 
     for (const item of this.state.items) {

@@ -8,7 +8,7 @@ import List from "../list";
 
 function Basket({active, setActive,items}){
 
-  console.log(items);
+  //console.log(items);
   return  <div className={active ? "basket active" : "basket"} onClick={()=>setActive(false)}>
     <div className="basket__content" onClick={e=>e.stopPropagation()}>
       <Layout head={<h1>Карта</h1>}>
@@ -21,4 +21,4 @@ function Basket({active, setActive,items}){
 
 
 
-export default Basket;
+export default React.memo(Basket);

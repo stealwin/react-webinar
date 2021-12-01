@@ -14,7 +14,7 @@ function Controls(props){
   return <div className='Controls'>
     <Basket active={modalActive} setActive={setModalActive} items={props.basketItems}/>
     <div>В корзине:{props.basketItems.length} товара / {reducer} рубля</div>
-    <button onClick={()=> setModalActive(true)}> Добавить</button>
+    <button onClick={()=> setModalActive(true)}> Перейти</button>
   </div>
 }
 
