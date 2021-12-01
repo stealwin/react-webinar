@@ -68,11 +68,23 @@ class Store {
     });
   }
 //Добавляем товар в корзину
+  //Берем кликнутый товар помещаем в массив
+  //считаем количество повторяющихся товаров
+  //кладем в массив уже уникальные значения, со свойством quantity, со значением повтора из предыдущего массива
   addToBasket(code){
-
     for (const item of this.state.items) {
       if(item.code == code){
-        this.arr.push(item)
+        this.arr.push({...item,
+        quantity:1,
+        countWord:"шт"});
+
+        /*console.log(this.arr.filter((tItem,index,arr)=>{
+          if (arr[index-1] && tItem.code==arr[index-1].code){
+            return ++tItem.quantity
+          } else {
+            return
+          }
+        }))*/
       }
     }
     this.setState({
