@@ -6,6 +6,7 @@ class Store {
     this.listners = [];
     //Массив для корзины
     this.arr = [];
+    this.arr2=[];
   }
 
   /**
@@ -71,22 +72,34 @@ class Store {
   //Берем кликнутый товар помещаем в массив
   //считаем количество повторяющихся товаров
   //кладем в массив уже уникальные значения, со свойством quantity, со значением повтора из предыдущего массива
+
+
   addToBasket(code){
     for (const item of this.state.items) {
       if(item.code == code){
         this.arr.push({...item,
-        quantity:1,
+        quantity:0,
         countWord:"шт"});
-
-        /*console.log(this.arr.filter((tItem,index,arr)=>{
-          if (arr[index-1] && tItem.code==arr[index-1].code){
-            return ++tItem.quantity
-          } else {
-            return
-          }
-        }))*/
       }
+
+
     }
+   this.arr = this.arr.filter((v,i,a)=>
+       a.findIndex(t=>(t.code===v.code))===i);
+    console.log("this arr2");
+    console.log(this.arr);
+  /*  function forFilter(item,pos){
+      return this.arr.indexOf(item) == pos;
+    }
+    let bindFilter = forFilter.bind(this.arr);*/
+
+    if(this.arr.length>0){
+      console.log("11");
+
+    }
+
+
+
     this.setState({
       items: this.state.items,
       itemsBasket:this.arr
