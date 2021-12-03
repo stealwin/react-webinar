@@ -10,7 +10,7 @@ function Basket({active, setActive,items}){
 
   return  <div className={active ? "basket active" : "basket"} onClick={()=>setActive(false)}>
     <div className="basket__content" onClick={e=>e.stopPropagation()}>
-      <Layout head={<h1>Карта</h1>}>
+      <Layout head={<h1>Корзина</h1>}>
         <List  items={items} />
           </Layout>
     </div>

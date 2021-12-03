@@ -12,6 +12,9 @@ function Item({item, onSelect, addToBasket}){
           return (
               <div className="Item__quantity">{item.price} {item.currency} {item.quantity} {item.countWord}</div>
          )
+      } else {
+          <div className="Item__price">{item.price} {item.currency}</div>
+
       }
 
   }
@@ -19,6 +22,12 @@ function Item({item, onSelect, addToBasket}){
       if (item.quantity){
           return(<div className='Item__actions'></div>)
 
+      } else {
+         return( <div className='Item__actions'>
+              <button onClick={() => addToBasket(item.code)}>
+                  Добавить
+              </button>
+          </div>)
       }
 
   }
@@ -40,13 +49,8 @@ function Item({item, onSelect, addToBasket}){
         {counter ? ` | Выделялся ${counter} ${plural(counter, 'раз', 'раза', 'раз')}` : null}
       </div>
         {renderQuantity()}
-        <div className="Item__price">{item.price} {item.currency}</div>
         {listForBasket()}
-      <div className='Item__actions'>
-        <button onClick={() => addToBasket(item.code)}>
-          Добавить
-        </button>
-      </div>
+
     </div>
   )
 }
