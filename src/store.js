@@ -78,11 +78,7 @@ class Store {
     for (const item of this.state.items) {
       if(item.code == code){
 
-        /* this.arr.push({...item,
-                quantity:0,
-                countWord:"шт"});*/
-
-       /* let selectedItem = {...item,
+        let selectedItem = {...item,
           quantity:1,
           countWord:"шт"};
         const basketItem = this.arr.find(item => item.code === selectedItem.code);
@@ -90,7 +86,7 @@ class Store {
           this.arr.push(selectedItem);
         } else {
           basketItem.quantity += selectedItem.quantity
-        }*/
+        }
 
        /* this.arr.push({...item,
         quantity:0,
@@ -99,7 +95,7 @@ class Store {
 
 
     }
-    console.log(this.arr);
+    console.log("dsadasda");
 
 
     this.setState({
