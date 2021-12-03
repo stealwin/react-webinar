@@ -9,7 +9,6 @@ function Item({item, onSelect, addToBasket,basketMode}){
   const [counter, setCounter] = useState(0);
   function renderQuantity(){
       if (basketMode){
-          console.log("item quantity works")
           return (
               <div className="Item__quantity">{item.price} {item.currency} {item.quantity} {item.countWord}</div>
          )
@@ -43,7 +42,7 @@ function Item({item, onSelect, addToBasket,basketMode}){
   };
 
   return (
-    <div className={'Item'  + (item.selected ? ' Item_selected' : '')} onClick={callbacks.onClick}>
+    <div className={'Item'  + (item.selected ? ' Item_selected' : '')} /*onClick={callbacks.onClick}*/>
       <div className='Item__number'>{item.code}</div>
       <div className='Item__title'>
         {item.title}

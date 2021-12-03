@@ -10,10 +10,17 @@ function Controls(props){
   let reducer  = arr.reduce(function (prev,curr) {
     return  prev + curr;
   },0);
+  function isEmptyBasket(){
+    if (props.basketItems.length==0){
+      return <div>В корзине: <b>пусто</b></div>
+    } else {
+      return <div>В корзине:{props.basketItems.length} товара / {reducer} рубля</div>
+    }
+  }
   console.log('Controls');
   return <div className='Controls'>
     <Basket active={modalActive} setActive={setModalActive} items={props.basketItems} basketSum={props.basketSum}/>
-    <div>В корзине:{props.basketItems.length} товара / {reducer} рубля</div>
+    {isEmptyBasket()}
     <button onClick={()=> setModalActive(true)}> Перейти</button>
   </div>
 }

@@ -13,8 +13,8 @@ function App({store}) {
   let isBasket=false;
   const callbacks = {
     onCreateItem: useCallback(() => store.createItem(), [store]),
-    onSelectItem: useCallback((code) => store.selectItem(code), [store]),
-    onDeleteItem: useCallback((code) => store.deleteItem(code), [store]),
+    // onSelectItem: useCallback((code) => store.selectItem(code), [store]),
+    // onDeleteItem: useCallback((code) => store.deleteItem(code), [store]),
     onAddToBasket:useCallback((code)=> store.addToBasket(code), [store])
   }
 
@@ -22,7 +22,6 @@ function App({store}) {
     <Layout head={<h1>Магазин</h1>} basket={isBasket} basketSum={store.sum}>
       <Controls onCreate={callbacks.onCreateItem} basketItems = {store.getState().itemsBasket} basketSum={store.sum}/>
       <List items={store.getState().items}
-            onSelectItem={callbacks.onSelectItem}
             onAddToBasket={callbacks.onAddToBasket}
             basketMode={isBasket}/>
     </Layout>
