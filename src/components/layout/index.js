@@ -1,8 +1,9 @@
 import React from "react";
 import './styles.css';
 
-function Layout({head,content,children,basket}){
+function Layout({head,content,children,basket,basketLayout}){
   console.log('Layout');
+  console.log(basketLayout);
    function basketButton(){
        if(basket){
           return (<div className='Layout__head-basket'><div className='Layout__head'>
@@ -17,12 +18,18 @@ function Layout({head,content,children,basket}){
                  </div> )
        }
    }
+   function basketSum(){
+       if(basket){
+         return  <div className="Layout__basket-sum">Итого {basketLayout.totalPrice} рублей {basketLayout.totalCount} шт  </div>
+       }
+   }
   return (
     <div className='Layout'>
         {basketButton()}
       <div className='Layout__center'>
         {content || children}
       </div>
+        {basketSum()}
     </div>
   )
 }

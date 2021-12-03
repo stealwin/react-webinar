@@ -9,6 +9,7 @@ import Layout from "./components/layout";
  */
 function App({store}) {
   console.log('App');
+  console.log(store.sum);
   let isBasket=false;
   const callbacks = {
     onCreateItem: useCallback(() => store.createItem(), [store]),
@@ -18,8 +19,8 @@ function App({store}) {
   }
 
   return (
-    <Layout head={<h1>Магазин</h1>} basket={isBasket}>
-      <Controls onCreate={callbacks.onCreateItem} basketItems = {store.getState().itemsBasket}/>
+    <Layout head={<h1>Магазин</h1>} basket={isBasket} basketSum={store.sum}>
+      <Controls onCreate={callbacks.onCreateItem} basketItems = {store.getState().itemsBasket} basketSum={store.sum}/>
       <List items={store.getState().items}
             onSelectItem={callbacks.onSelectItem}
             onAddToBasket={callbacks.onAddToBasket}/>

@@ -6,12 +6,13 @@ import Controls from "../controls";
 import List from "../list";
 
 
-function Basket({active, setActive,items}){
+function Basket({active, setActive,items,basketSum}){
   let isBasket= true;
+  console.log(basketSum.totalPrice);
 
   return  <div className={active ? "basket active" : "basket"} onClick={()=>setActive(false)}>
     <div className="basket__content" onClick={e=>e.stopPropagation()}>
-      <Layout head={<h1>Корзина</h1>} basket={isBasket} >
+      <Layout head={<h1>Корзина</h1>} basket={isBasket} basketLayout={basketSum}>
         <List  items={items} />
           </Layout>
     </div>

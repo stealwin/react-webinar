@@ -103,7 +103,6 @@ class Store {
         this.sum={totalCount: sumCount,
                     totalPrice: sumPrice}
     }
-    console.log(this.sum)
 
 
 

@@ -1,7 +1,7 @@
 /* Контрол с общими действиями */
 .basket{
     position: fixed;
-    width: 100vw;
+    width: 50%;
     height: 100vh;
     top: 0;
     left: 0;
