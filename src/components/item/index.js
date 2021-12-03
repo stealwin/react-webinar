@@ -3,17 +3,18 @@ import propTypes from 'prop-types';
 import plural from 'plural-ru';
 import './styles.css';
 
-function Item({item, onSelect, addToBasket}){
+function Item({item, onSelect, addToBasket,basketMode}){
   console.log('Item', item.title);
-
+    console.log(basketMode, "basket mode");
   const [counter, setCounter] = useState(0);
   function renderQuantity(){
-      if (item.quantity){
+      if (basketMode){
+          console.log("item quantity works")
           return (
               <div className="Item__quantity">{item.price} {item.currency} {item.quantity} {item.countWord}</div>
          )
       } else {
-          <div className="Item__price">{item.price} {item.currency}</div>
+            return(<div className="Item__price">{item.price} {item.currency}</div>)
 
       }
 

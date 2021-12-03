@@ -13,7 +13,7 @@ function Basket({active, setActive,items,basketSum}){
   return  <div className={active ? "basket active" : "basket"} onClick={()=>setActive(false)}>
     <div className="basket__content" onClick={e=>e.stopPropagation()}>
       <Layout head={<h1>Корзина</h1>} basket={isBasket} basketLayout={basketSum}>
-        <List  items={items} />
+        <List  items={items} basketMode={isBasket} />
           </Layout>
     </div>
 

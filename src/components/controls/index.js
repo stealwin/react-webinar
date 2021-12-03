@@ -11,7 +11,6 @@ function Controls(props){
     return  prev + curr;
   },0);
   console.log('Controls');
-  console.log(props.basketSum)
   return <div className='Controls'>
     <Basket active={modalActive} setActive={setModalActive} items={props.basketItems} basketSum={props.basketSum}/>
     <div>В корзине:{props.basketItems.length} товара / {reducer} рубля</div>
