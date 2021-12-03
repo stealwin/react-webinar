@@ -6,7 +6,8 @@ class Store {
     this.listners = [];
     //Массив для корзины
     this.arr = [];
-    this.arr2=[];
+    this.sum={};
+
   }
 
   /**
@@ -88,17 +89,22 @@ class Store {
         } else {
           basketItem.quantity += selectedItem.quantity;
           basketItem.price_quant += selectedItem.price_quant;
-
         }
-
        /* this.arr.push({...item,
         quantity:0,
         countWord:"шт"});*/
       }
-
-
     }
-    console.log("dsadasda");
+    let sumCount = 0;
+    let sumPrice=0;
+    for (const item  of this.arr) {
+        sumCount += item.quantity;
+        sumPrice += item.price_quant;
+        this.sum={totalCount: sumCount,
+                    totalPrice: sumPrice}
+    }
+    console.log(this.sum)
+
 
 
     this.setState({
