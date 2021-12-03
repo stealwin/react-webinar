@@ -6,7 +6,7 @@ import './styles.css';
 function Controls(props){
   const [modalActive, setModalActive] = useState(false);
 
-  let arr = props.basketItems.map(item => item.price);
+  let arr = props.basketItems.map(item => item.price_quant);
   let reducer  = arr.reduce(function (prev,curr) {
     return  prev + curr;
   },0);

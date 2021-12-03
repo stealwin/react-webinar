@@ -7,6 +7,21 @@ function Item({item, onSelect, addToBasket}){
   console.log('Item', item.title);
 
   const [counter, setCounter] = useState(0);
+  function renderQuantity(){
+      if (item.quantity){
+          return (
+              <div className="Item__quantity">{item.price} {item.currency} {item.quantity} {item.countWord}</div>
+         )
+      }
+
+  }
+  function listForBasket(){
+      if (item.quantity){
+          return(<div className='Item__actions'></div>)
+
+      }
+
+  }
 
   const callbacks = {
     onClick: useCallback(() => {
@@ -24,7 +39,9 @@ function Item({item, onSelect, addToBasket}){
         {item.title}
         {counter ? ` | Выделялся ${counter} ${plural(counter, 'раз', 'раза', 'раз')}` : null}
       </div>
+        {renderQuantity()}
         <div className="Item__price">{item.price} {item.currency}</div>
+        {listForBasket()}
       <div className='Item__actions'>
         <button onClick={() => addToBasket(item.code)}>
           Добавить
@@ -45,4 +62,4 @@ Item.defaultProps = {
   onDeleted: () => {}
 }
 
-export default React.memo(Item);
+export default Item;

@@ -80,12 +80,15 @@ class Store {
 
         let selectedItem = {...item,
           quantity:1,
+          price_quant: item.price,
           countWord:"шт"};
         const basketItem = this.arr.find(item => item.code === selectedItem.code);
         if (!basketItem) {
           this.arr.push(selectedItem);
         } else {
-          basketItem.quantity += selectedItem.quantity
+          basketItem.quantity += selectedItem.quantity;
+          basketItem.price_quant += selectedItem.price_quant;
+
         }
 
        /* this.arr.push({...item,
