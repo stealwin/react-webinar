@@ -77,27 +77,29 @@ class Store {
   addToBasket(code){
     for (const item of this.state.items) {
       if(item.code == code){
-        this.arr.push({...item,
+
+        /* this.arr.push({...item,
+                quantity:0,
+                countWord:"шт"});*/
+
+       /* let selectedItem = {...item,
+          quantity:1,
+          countWord:"шт"};
+        const basketItem = this.arr.find(item => item.code === selectedItem.code);
+        if (!basketItem) {
+          this.arr.push(selectedItem);
+        } else {
+          basketItem.quantity += selectedItem.quantity
+        }*/
+
+       /* this.arr.push({...item,
         quantity:0,
-        countWord:"шт"});
+        countWord:"шт"});*/
       }
 
 
     }
-   this.arr = this.arr.filter((v,i,a)=>
-       a.findIndex(t=>(t.code===v.code))===i);
-    console.log("this arr2");
     console.log(this.arr);
-  /*  function forFilter(item,pos){
-      return this.arr.indexOf(item) == pos;
-    }
-    let bindFilter = forFilter.bind(this.arr);*/
-
-    if(this.arr.length>0){
-      console.log("11");
-
-    }
-
 
 
     this.setState({
