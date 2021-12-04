@@ -3,7 +3,6 @@ import './styles.css';
 
 function Layout({head,content,children,basket,basketLayout}){
   console.log('Layout');
-  console.log(basket);
    function basketButton(){
        if(basket){
           return (<div className='Layout__head-basket'><div className='Layout__head'>

@@ -23,7 +23,8 @@ function App({store}) {
       <Controls onCreate={callbacks.onCreateItem} basketItems = {store.getState().itemsBasket} basketSum={store.sum}/>
       <List items={store.getState().items}
             onAddToBasket={callbacks.onAddToBasket}
-            basketMode={isBasket}/>
+            basketMode={isBasket}
+            basketItemNumber={store.sum.position}/>
     </Layout>
   );
 }

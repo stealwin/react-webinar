@@ -4,8 +4,6 @@ import plural from 'plural-ru';
 import './styles.css';
 
 function Item({item, onSelect, addToBasket,basketMode}){
-  console.log('Item', item.title);
-    console.log(basketMode, "basket mode");
   const [counter, setCounter] = useState(0);
   function renderQuantity(){
       if (basketMode){

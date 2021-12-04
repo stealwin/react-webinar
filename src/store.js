@@ -82,6 +82,7 @@ class Store {
         let selectedItem = {...item,
           quantity:1,
           price_quant: item.price,
+          number:0,
           countWord:"шт"};
         const basketItem = this.arr.find(item => item.code === selectedItem.code);
         if (!basketItem) {
@@ -95,15 +96,20 @@ class Store {
         countWord:"шт"});*/
       }
     }
+    console.log("arr")
+    console.log(this.arr);
+
     let sumCount = 0;
     let sumPrice=0;
+    let position=0;
     for (const item  of this.arr) {
         sumCount += item.quantity;
         sumPrice += item.price_quant;
         this.sum={totalCount: sumCount,
-                    totalPrice: sumPrice}
+                    totalPrice: sumPrice,
+                    position: this.arr.length}
     }
-
+    console.log(this.sum);
 
 
     this.setState({
