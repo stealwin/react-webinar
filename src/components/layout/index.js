@@ -25,7 +25,7 @@ function Layout({head,content,children,basket,basketLayout}){
        }
    }
   return (
-    <div className='Layout'>
+    <div className={ basket ? "Layout__basket" : "Layout"}>
         {basketButton()}
         <div className='Layout__center'>
         {content || children}

@@ -7,7 +7,7 @@ function Item({item, onSelect, addToBasket,basketMode}){
   const [counter, setCounter] = useState(0);
     function listForBasket(){
         if (item.quantity){
-            return(<div className='Item__actions'></div>)
+            return(<div ></div>)
 
         } else {
             return( <div className='Item__actions'>

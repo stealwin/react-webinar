@@ -15,7 +15,12 @@ body{
     box-shadow: 0 0 15px 5px #0000003b;
 }
 .Layout__basket{
-    margin: 50% auto;
+    max-width: 1024px;
+    min-height: 70vh;
+    margin: 0 auto;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 0 15px 5px #0000003b;
 }
 .Layout__head{
     height: 80px;
@@ -38,5 +43,5 @@ body{
 .Layout__close-btn button{
     margin: 10px 30px;
     position: absolute;
-    top:15px
+    top: 134px;
 }
