@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import propTypes from 'prop-types';
+import plural from 'plural-ru';
 import Basket from "../basket";
 import './styles.css';
 
@@ -13,7 +14,7 @@ function Controls(props){
     if (props.basketItems.length==0){
       return <div>В корзине: <b style={{margin:"0 5px"}}>пусто</b></div>
     } else {
-      return <div>В корзине:{props.basketItems.length} товара / {reducer} рубля</div>
+      return <div>В корзине: {props.basketItems.length} {plural(props.basketItems.length, 'товар', 'товара', 'товаров')} / {reducer} ₽</div>
     }
   }
   console.log('Controls');

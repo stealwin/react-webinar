@@ -10,13 +10,13 @@ console.log('index.js');
 // Состояние приложения
 const store = new Store({
   items: [
-    {code: 1, title: 'Название элемента', price:100, currency: 'P'},
-    {code: 2, title: 'Некий объект',price:120, currency: 'P'},
-    {code: 3, title: 'Заголовок',price:1730, currency: 'P'},
-    {code: 4, title: 'Короткое название',price:920, currency: 'P'},
-    {code: 5, title: 'Запись',price:12, currency: 'P'},
-    {code: 6, title: 'Пример названия',price:140, currency: 'P'},
-    {code: 7, title: 'Седьмой',price:190, currency: 'P'}
+    {code: 1, title: 'Название элемента', price:100, currency: '₽'},
+    {code: 2, title: 'Некий объект',price:120, currency: '₽'},
+    {code: 3, title: 'Заголовок',price:1730, currency: '₽'},
+    {code: 4, title: 'Короткое название',price:920, currency: '₽'},
+    {code: 5, title: 'Запись',price:12, currency: '₽'},
+    {code: 6, title: 'Пример названия',price:140, currency: '₽'},
+    {code: 7, title: 'Седьмой',price:190, currency: '₽'}
   ],
   itemsBasket:[]
 });
