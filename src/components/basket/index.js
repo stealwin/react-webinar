@@ -9,11 +9,14 @@ import List from "../list";
 function Basket({active, setActive,items,basketSum}){
   let isBasket= true;
 
+
   return  <div className={active ? "basket active" : "basket"} onClick={()=>setActive(false)}>
     <div className="basket__content" onClick={e=>e.stopPropagation()}>
-      <Layout head={<h1>Корзина</h1>} basket={isBasket} basketLayout={basketSum}>
+      <Layout style={{backgroundColor:"black"}} head={<h1>Корзина</h1>} basket={isBasket} basketLayout={basketSum}>
+
         <List  items={items} basketMode={isBasket} />
-          </Layout>
+
+      </Layout>
     </div>
 
   </div>

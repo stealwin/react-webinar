@@ -10,7 +10,7 @@
 }
 
 .Item__title{
-    width: 100%;
+    width: 74%;
     padding: 20px 10px;
 }
 .Item__actions{
@@ -20,4 +20,13 @@
 }
 .Item__number{
     padding: 20px 10px 20px 20px;
+}
+.Item__price-container{
+    width: 26%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.Item__price-container div{
+    margin:0 10px;
 }

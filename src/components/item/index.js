@@ -5,30 +5,39 @@ import './styles.css';
 
 function Item({item, onSelect, addToBasket,basketMode}){
   const [counter, setCounter] = useState(0);
+    function listForBasket(){
+        if (item.quantity){
+            return(<div className='Item__actions'></div>)
+
+        } else {
+            return( <div className='Item__actions'>
+                <button onClick={() => addToBasket(item.code)}>
+                    Добавить
+                </button>
+            </div>)
+        }
+
+    }
   function renderQuantity(){
       if (basketMode){
           return (
-              <div className="Item__quantity">{item.price} {item.currency} {item.quantity} {item.countWord}</div>
+              <div className="Item__price-container">
+              <div className="Item__price">{item.price}  {item.currency}</div>
+                  <div>{item.quantity} {item.countWord}</div>
+                  {listForBasket()}
+              </div>
          )
       } else {
-            return(<div className="Item__price">{item.price} {item.currency}</div>)
+            return(<div className="Item__price-container">
+                        <div className="Item__price">{item.price} {item.currency}</div>
+                        {listForBasket()}
+                    </div>
+            )
 
       }
 
   }
-  function listForBasket(){
-      if (item.quantity){
-          return(<div className='Item__actions'></div>)
 
-      } else {
-         return( <div className='Item__actions'>
-              <button onClick={() => addToBasket(item.code)}>
-                  Добавить
-              </button>
-          </div>)
-      }
-
-  }
 
   const callbacks = {
     onClick: useCallback(() => {
@@ -47,8 +56,6 @@ function Item({item, onSelect, addToBasket,basketMode}){
         {counter ? ` | Выделялся ${counter} ${plural(counter, 'раз', 'раза', 'раз')}` : null}
       </div>
         {renderQuantity()}
-        {listForBasket()}
-
     </div>
   )
 }

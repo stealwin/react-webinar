@@ -8,7 +8,9 @@ function Layout({head,content,children,basket,basketLayout}){
           return (<div className='Layout__head-basket'><div className='Layout__head'>
               {head}
           </div>
-                  <div><button>Закрыть</button> </div>
+                  <div className="Layout__close-btn"><button>Закрыть</button> </div>
+                  <div className="Layout__empty"></div>
+
               </div>
        )
        } else {
@@ -25,7 +27,7 @@ function Layout({head,content,children,basket,basketLayout}){
   return (
     <div className='Layout'>
         {basketButton()}
-      <div className='Layout__center'>
+        <div className='Layout__center'>
         {content || children}
       </div>
         {basketSum()}
