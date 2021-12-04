@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background: #535353;
@@ -6,7 +6,7 @@ body{
 }
 
 /* Страница*/
-.Layout{
+.Layout {
     max-width: 1024px;
     min-height: 100vh;
     margin: 0 auto;
@@ -14,7 +14,8 @@ body{
     box-sizing: border-box;
     box-shadow: 0 0 15px 5px #0000003b;
 }
-.Layout__basket{
+
+.Layout__basket {
     max-width: 1024px;
     min-height: 70vh;
     margin: 0 auto;
@@ -22,40 +23,49 @@ body{
     box-sizing: border-box;
     box-shadow: 0 0 15px 5px #0000003b;
 }
-.Layout__head{
+
+.Layout__head {
     height: 80px;
     background: #f5f5f5;
 }
-.Layout__head h1{
+
+.Layout__head h1 {
     margin: 0;
     padding: 20px 20px 10px;
 }
-.Layout__basket-sum{
+
+.Layout__basket-sum {
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: end;
 }
-.Layout__basket-sum-empty{
+
+.Layout__basket-sum-empty {
     width: 24%;
 }
-.Layout__basket-sum-total{
+
+.Layout__basket-sum-total {
     display: flex;
     justify-content: end;
     font-weight: bold;
 }
-.Layout__basket-sum div{
+
+.Layout__basket-sum div {
     margin: 0 12px;
 }
-.Layout__empty{
+
+.Layout__empty {
     height: 50px;
 }
-.Layout__close-btn{
+
+.Layout__close-btn {
     display: flex;
     justify-content: end;
 }
-.Layout__close-btn button{
+
+.Layout__close-btn button {
     margin: 10px 30px;
     position: absolute;
-    top:  132px;
+    top: 132px;
 }

@@ -6,23 +6,23 @@ import Controls from "../controls";
 import List from "../list";
 
 
-function Basket({active, setActive,items,basketSum}){
-  let isBasket= true;
+function Basket({active, setActive, items, basketSum}) {
+    let isBasket = true;
 
 
-  return  <div className={active ? "basket active" : "basket"}>
-    <div className="basket__content">
-      <Layout style={{backgroundColor:"black"}} head={<h1>Корзина</h1>} basket={isBasket} basketLayout={basketSum}
-          setActive={setActive}>
+    return <div className={active ? "basket active" : "basket"}>
+        <div className="basket__content">
+            <Layout style={{backgroundColor: "black"}} head={<h1>Корзина</h1>} basket={isBasket}
+                    basketLayout={basketSum}
+                    setActive={setActive}>
 
-        <List  items={items} basketMode={isBasket}/>
+                <List items={items} basketMode={isBasket}/>
 
-      </Layout>
+            </Layout>
+        </div>
+
     </div>
-
-  </div>
 }
-
 
 
 export default React.memo(Basket);

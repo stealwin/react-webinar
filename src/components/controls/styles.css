@@ -1,13 +1,15 @@
 /* Контрол с общими действиями */
-.Controls{
+.Controls {
     display: flex;
     justify-content: flex-end;
     padding: 21px 35px 23px 0;
 }
-.Controls__count-container{
+
+.Controls__count-container {
     display: flex;
 
 }
-.Controls__count-container div{
+
+.Controls__count-container div {
     margin: 0 5px;
 }

@@ -1,23 +1,24 @@
 /* Контрол с общими действиями */
-.basket{
+.basket {
     position: fixed;
     top: 0;
     left: 0;
     width: 500px;
     height: 100vh;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
     visibility: hidden;
 }
-.basket.active{
+
+.basket.active {
     visibility: visible;
     width: 100%;
 
 }
 
-.basket__content{
+.basket__content {
     width: 50%;
     background-color: white;
 
