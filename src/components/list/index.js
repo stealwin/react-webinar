@@ -3,13 +3,12 @@ import propTypes from 'prop-types';
 import Item from "../item";
 import './styles.css';
 
-function List({items, onSelectItem, onAddToBasket,basketMode,basketItemNumber}){
+function List({items, onSelectItem, onAddToBasket,basketMode}){
   console.log('List');
-  console.log(basketMode);
   function isAddToBasket(){
           if (basketMode) {
             return  <div className='List'>{items.map(item =>
-                <div className='List__item' key={basketItemNumber}>
+                <div className='List__item' key={item.code}>
                   <Item item={item} onSelect={onSelectItem} addToBasket={onAddToBasket} basketMode={basketMode}/>
                 </div>
             )}
@@ -17,7 +16,7 @@ function List({items, onSelectItem, onAddToBasket,basketMode,basketItemNumber}){
             } else {
             return <div className='List'>{items.map(item =>
                 <div className='List__item' key={item.code}>
-                  <Item item={item} onSelect={onSelectItem} addToBasket={onAddToBasket} basketMode={basketMode}/>
+                  <Item item={item} onSelect={onSelectItem} addToBasket={onAddToBasket}/>
                 </div>
             )}
             </div>

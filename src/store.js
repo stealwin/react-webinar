@@ -7,6 +7,7 @@ class Store {
     //Массив для корзины
     this.arr = [];
     this.sum={};
+    this.arr2=[];
 
   }
 
@@ -86,6 +87,7 @@ class Store {
           countWord:"шт"};
         const basketItem = this.arr.find(item => item.code === selectedItem.code);
         if (!basketItem) {
+          selectedItem.number = this.arr.length+1;
           this.arr.push(selectedItem);
         } else {
           basketItem.quantity += selectedItem.quantity;
@@ -96,8 +98,7 @@ class Store {
         countWord:"шт"});*/
       }
     }
-    console.log("arr")
-    console.log(this.arr);
+    console.log(this.arr, "arr new");
 
     let sumCount = 0;
     let sumPrice=0;
@@ -105,19 +106,17 @@ class Store {
     for (const item  of this.arr) {
         sumCount += item.quantity;
         sumPrice += item.price_quant;
+        console.log("this length of arr", this.arr.length);
         this.sum={totalCount: sumCount,
                     totalPrice: sumPrice,
                     position: this.arr.length}
     }
-    console.log(this.sum);
 
 
     this.setState({
       items: this.state.items,
       itemsBasket:this.arr
     });
-    console.log(this.state.itemsBasket );
-    console.log(this.state.items );
 
   }
 

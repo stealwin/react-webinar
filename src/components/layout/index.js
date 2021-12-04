@@ -1,14 +1,14 @@
 import React from "react";
 import './styles.css';
 
-function Layout({head,content,children,basket,basketLayout}){
+function Layout({head,content,children,basket,basketLayout,setActive}){
   console.log('Layout');
    function basketButton(){
        if(basket){
           return (<div className='Layout__head-basket'><div className='Layout__head'>
               {head}
           </div>
-                  <div className="Layout__close-btn"><button>Закрыть</button> </div>
+                  <div className="Layout__close-btn" onClick={()=>setActive(false)}><button>Закрыть</button> </div>
                   <div className="Layout__empty"></div>
 
               </div>
@@ -21,7 +21,13 @@ function Layout({head,content,children,basket,basketLayout}){
    }
    function basketSum(){
        if(basket){
-         return  <div className="Layout__basket-sum">Итого {basketLayout.totalPrice} рублей {basketLayout.totalCount} шт  </div>
+         return  <div className="Layout__basket-sum"><div className="Layout__basket-sum-empty"></div>
+                                <div className="Layout__basket-sum-total">
+                                <div>Итого </div>
+                                <div>{basketLayout.totalPrice} ₽</div>
+                                <div>{basketLayout.totalCount} шт</div>
+                                </div>
+                </div>
        }
    }
   return (

@@ -9,7 +9,6 @@ import Layout from "./components/layout";
  */
 function App({store}) {
   console.log('App');
-  console.log(store.sum);
   let isBasket=false;
   const callbacks = {
     onCreateItem: useCallback(() => store.createItem(), [store]),
@@ -23,8 +22,7 @@ function App({store}) {
       <Controls onCreate={callbacks.onCreateItem} basketItems = {store.getState().itemsBasket} basketSum={store.sum}/>
       <List items={store.getState().items}
             onAddToBasket={callbacks.onAddToBasket}
-            basketMode={isBasket}
-            basketItemNumber={store.sum.position}/>
+            basketMode={isBasket}/>
     </Layout>
   );
 }

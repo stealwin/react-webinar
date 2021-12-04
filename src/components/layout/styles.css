@@ -31,7 +31,21 @@ body{
     padding: 20px 20px 10px;
 }
 .Layout__basket-sum{
-
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.Layout__basket-sum-empty{
+    width: 24%;
+}
+.Layout__basket-sum-total{
+    display: flex;
+    justify-content: end;
+    font-weight: bold;
+}
+.Layout__basket-sum div{
+    margin: 0 12px;
 }
 .Layout__empty{
     height: 50px;
@@ -43,5 +57,5 @@ body{
 .Layout__close-btn button{
     margin: 10px 30px;
     position: absolute;
-    top: 134px;
+    top:  132px;
 }

@@ -50,7 +50,7 @@ function Item({item, onSelect, addToBasket,basketMode}){
 
   return (
     <div className={'Item'  + (item.selected ? ' Item_selected' : '')} /*onClick={callbacks.onClick}*/>
-      <div className='Item__number'>{item.code}</div>
+      <div className='Item__number'>{basketMode ? item.number :  item.code}</div>
       <div className='Item__title'>
         {item.title}
         {counter ? ` | Выделялся ${counter} ${plural(counter, 'раз', 'раза', 'раз')}` : null}

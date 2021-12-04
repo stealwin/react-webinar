@@ -12,9 +12,10 @@ function Basket({active, setActive,items,basketSum}){
 
   return  <div className={active ? "basket active" : "basket"} onClick={()=>setActive(false)}>
     <div className="basket__content" onClick={e=>e.stopPropagation()}>
-      <Layout style={{backgroundColor:"black"}} head={<h1>Корзина</h1>} basket={isBasket} basketLayout={basketSum}>
+      <Layout style={{backgroundColor:"black"}} head={<h1>Корзина</h1>} basket={isBasket} basketLayout={basketSum}
+          setActive={setActive}>
 
-        <List  items={items} basketMode={isBasket} />
+        <List  items={items} basketMode={isBasket}/>
 
       </Layout>
     </div>
@@ -24,4 +25,4 @@ function Basket({active, setActive,items,basketSum}){
 
 
 
-export default Basket;
+export default React.memo(Basket);

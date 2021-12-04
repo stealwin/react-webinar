@@ -5,14 +5,13 @@ import './styles.css';
 
 function Controls(props){
   const [modalActive, setModalActive] = useState(false);
-
   let arr = props.basketItems.map(item => item.price_quant);
   let reducer  = arr.reduce(function (prev,curr) {
     return  prev + curr;
   },0);
   function isEmptyBasket(){
     if (props.basketItems.length==0){
-      return <div>В корзине: <b>пусто</b></div>
+      return <div>В корзине: <b style={{margin:"0 5px"}}>пусто</b></div>
     } else {
       return <div>В корзине:{props.basketItems.length} товара / {reducer} рубля</div>
     }
@@ -20,8 +19,12 @@ function Controls(props){
   console.log('Controls');
   return <div className='Controls'>
     <Basket active={modalActive} setActive={setModalActive} items={props.basketItems} basketSum={props.basketSum}/>
+    <div className="Controls__count-container">
     {isEmptyBasket()}
-    <button onClick={()=> setModalActive(true)}> Перейти</button>
+      <div>
+      <button onClick={()=> setModalActive(true)}> Перейти</button>
+      </div>
+    </div>
   </div>
 }
 
