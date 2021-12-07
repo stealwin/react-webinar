@@ -6,6 +6,7 @@ class Store {
         this.listners = [];
         //Массив для корзины
         this.arr = [];
+        this.arr2 = [];
         this.sum = {};
 
     }
@@ -77,6 +78,7 @@ class Store {
 
 
     addToBasket(code) {
+        let basket = [...this.arr];
         for (const item of this.state.items) {
             if (item.code == code) {
 
@@ -87,18 +89,26 @@ class Store {
                     number: 0,
                     countWord: "шт"
                 };
-                const basketItem = this.arr.find(item => item.code === selectedItem.code);
+                let basketItem = basket.find(item => item.code === selectedItem.code);
                 if (!basketItem) {
                     selectedItem.number = this.arr.length + 1;
                     this.arr.push(selectedItem);
                 } else {
-                    basketItem.quantity += selectedItem.quantity;
-                    basketItem.price_quant += selectedItem.price_quant;
+                    this.arr[this.arr.indexOf(basketItem)] = {...basketItem, quantity:selectedItem.quantity+basketItem.quantity,
+                                    price_quant: selectedItem.price_quant+basketItem.price_quant}
+                   /*basketItem.quantity += selectedItem.quantity;
+                    basketItem.price_quant += selectedItem.price_quant;*/
                 }
 
             }
         }
-        console.log(this.arr, "arr new");
+
+        function addItemInArr(item){
+            if (item){
+
+            }
+
+        }
 
         let sumCount = 0;
         let sumPrice = 0;
