@@ -1,11 +1,14 @@
 import React from 'react';
 import './styles.css';
 
-function Pagination(){
+function Pagination({pages}){
+  let numbers = Array.from({length:pages},(v,k)=>k+1);
+  console.log(numbers);
 return <div className="Pagination__pages">
       <ul>
-      <li><a href="">1</a></li>
-      <li><a href="">2</a></li>
+        {numbers.map(number=>
+          <li key={number}>{number}</li>
+        )}
       </ul>
       </div>
 }

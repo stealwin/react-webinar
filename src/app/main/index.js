@@ -15,15 +15,16 @@ function Main() {
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
-  console.log("main")
-  console.log(select)
+
 
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {
     await store.catalog.load();
+    store.catalog.pagination();
   }, []);
 
   const store = useStore();
+  console.log(store.catalog.pagination())
 
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
@@ -40,7 +41,7 @@ function Main() {
     <Layout head={<h1>Магазин</h1>}>
       <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>
       <List items={select.items} renderItem={renders.item}/>
-      <Pagination></Pagination>
+      <Pagination pages={store.catalog.pagination()}></Pagination>
 
     </Layout>
   );
