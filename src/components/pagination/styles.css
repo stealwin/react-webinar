@@ -1,0 +1,15 @@
+.Pagination{
+
+}
+.Pagination__pages{
+  display: flex;
+  justify-content: end;
+}
+ ul{
+   list-style-type: none;
+   margin-right: 133px;
+}
+ li{
+   display: inline;
+   margin-left:5px;
+ }
