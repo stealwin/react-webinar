@@ -12,4 +12,11 @@
  li{
    display: inline;
    margin-left:5px;
+   cursor: pointer;
  }
+li:hover{
+  background-color: #75aaf1;
+}
+.Pagination__item-active{
+  background-color: #535353;
+}

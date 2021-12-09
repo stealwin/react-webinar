@@ -3,6 +3,7 @@ import StoreModule from "../module";
 class CatalogStore extends StoreModule {
  countItems;
   limit=10;
+  isSelected=false;
   /**
    * Начальное состояние
    */
