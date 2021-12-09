@@ -6,6 +6,7 @@ import List from "../../components/list";
 import Pagination from "../../components/pagination";
 import useStore from "../../utils/use-store";
 import useSelector from "../../utils/use-selector";
+import {catalog} from "../../store/exports";
 
 function Main() {
 
@@ -19,7 +20,7 @@ function Main() {
 
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {
-    await store.catalog.load();
+    await store.catalog.load(store.catalog.limit,0);
     store.catalog.pagination();
   }, []);
 
@@ -41,7 +42,7 @@ function Main() {
     <Layout head={<h1>Магазин</h1>}>
       <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>
       <List items={select.items} renderItem={renders.item}/>
-      <Pagination pages={store.catalog.pagination()}></Pagination>
+      <Pagination pages={store.catalog.pagination()} catalog={store.catalog}></Pagination>
 
     </Layout>
   );

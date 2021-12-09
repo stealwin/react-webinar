@@ -2,6 +2,7 @@ import StoreModule from "../module";
 
 class CatalogStore extends StoreModule {
  countItems;
+  limit=10;
   /**
    * Начальное состояние
    */
@@ -14,8 +15,8 @@ class CatalogStore extends StoreModule {
   /**
    * Загрузка списка товаров
    */
-  async load(){
-    const response = await fetch('/api/v1/articles?limit=10$&offset=10&fields=items(*),count');
+  async load(limit,skip){
+    const response = await fetch('/api/v1/articles?limit='+limit+'$&skip='+skip+'&fields=items(*),count');
     const json = await response.json();
     this.countItems=json.result.count;
     this.setState({
@@ -25,7 +26,7 @@ class CatalogStore extends StoreModule {
   }
   pagination(){
     const count = this.countItems
-    const limit = 10;
+    const limit = this.limit;
     const pages = count / limit;
     return pages;
   }
