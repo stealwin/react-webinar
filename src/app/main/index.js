@@ -6,6 +6,10 @@ import List from "../../components/list";
 import useStore from "../../utils/use-store";
 import useSelector from "../../utils/use-selector";
 
+// Action creators
+import basketActions from '../../store-redux/basket/actions';
+import catalogActions from '../../store-redux/catalog/actions';
+
 function Main() {
 
   const select = useSelector(state => ({
@@ -14,16 +18,26 @@ function Main() {
     sum: state.basket.sum
   }));
 
-  // Загрузка тестовых данных при первом рендере
-  useEffect(async () => {
-    await store.catalog.load();
-  }, []);
-
+  // redux store
   const store = useStore();
 
+  // Загрузка тестовых данных при первом рендере
+  useEffect(async () => {
+    //await store.catalog.load();
+
+    // Отправляем дейстиве, которое создаёт .load()
+    // на самом деле .load создаст функцию, её вызвит middleware redux-thunk и в самой функции будет отправлено действие
+    store.dispatch(catalogActions.load());
+  }, []);
+
   const callbacks = {
-    addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
-    openModal: useCallback(() => store.modals.open('basket'), [store]),
+    //addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
+    //openModal: useCallback(() => store.modals.open('basket'), [store]),
+
+    // Добавление товара в корзину с использвоанием
+    addToBasket: useCallback((_id) => store.dispatch(basketActions.add(_id)), [store]),
+    // Вручную созадём действие открытия модалки.
+    openModal: useCallback(() => store.dispatch({type: 'modals/open', payload: {name: 'basket'}}), [store]),
   }
 
   const renders = {

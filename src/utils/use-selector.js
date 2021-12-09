@@ -14,8 +14,8 @@ export default function useSelector(selector){
   const [state, setState] = React.useState(selector(store.getState()));
 
   useEffect(() => {
-    return store.subscribe(newState => {
-      const result = selector(newState);
+    return store.subscribe(() => {
+      const result = selector(store.getState());
       if (!shallowequal(state, result)) {
         setState(result);
       }

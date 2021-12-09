@@ -17,7 +17,9 @@ function Basket(){
   const store = useStore();
 
   const callbacks = {
-    closeModal: useCallback(() => store.modals.close(), [store]),
+    //closeModal: useCallback(() => store.modals.close(), [store]),
+
+    closeModal: useCallback(() => store.dispatch({type: 'modals/close'}), [store]),
   }
 
   const renders = {
