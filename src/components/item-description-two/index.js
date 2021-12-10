@@ -10,7 +10,7 @@ import useStore from "../../utils/use-store";
 import useSelector from "../../utils/use-selector";
 import {catalog} from "../../store/exports";
 
-function Main() {
+function ItemDescriptionTwo() {
 
   const select = useSelector(state => ({
     items: state.catalog.items,
@@ -42,13 +42,15 @@ function Main() {
 
   return (
 
-      <Layout head={<h1>Магазин</h1>}>
+    <Layout head={<h1>Магазин</h1>}>
       <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>
       <List items={select.items} renderItem={renders.item}/>
       <Pagination pages={store.catalog.pagination()} catalog={store.catalog}></Pagination>
-      </Layout>
+    </Layout>
 
   );
 }
 
-export default React.memo(Main);
+
+
+export default ItemDescriptionTwo;

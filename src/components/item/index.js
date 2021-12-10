@@ -2,10 +2,14 @@ import React from 'react';
 import propTypes from 'prop-types';
 import './styles.css';
 import numberFormat from "../../utils/number-format";
+import {Link, Route, Routes} from "react-router-dom";
+import ItemDescription from "../item-description";
 
 function Item({item, onAdd}) {
   return (
-    <div className='Item'>
+    <div>
+    <Link to="/descr">
+      <div className='Item'>
       <div className='Item__number'>{item.order}</div>
       <div className='Item__title'>{item.title}</div>
       <div className='Item__right'>
@@ -13,6 +17,11 @@ function Item({item, onAdd}) {
         <button onClick={() => onAdd(item._id)}>Добавить</button>
       </div>
     </div>
+
+    </Link>
+
+    </div>
+
   )
 }
 

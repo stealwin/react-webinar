@@ -2,6 +2,11 @@ import React from 'react';
 import Main from "./main";
 import Basket from "./basket";
 import useSelector from "../utils/use-selector";
+import {Route} from "react-router-dom";
+import Routes from "../components/page-paths"
+import ItemDescription from "../components/item-description";
+import PagePaths from "../components/page-paths";
+
 
 /**
  * Приложение
@@ -14,7 +19,7 @@ function App() {
 
   return (
     <>
-      <Main/>
+      <PagePaths/>
       {select.name === 'basket' && <Basket/>}
     </>
   );
