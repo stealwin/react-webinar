@@ -6,8 +6,8 @@ import Main from "../../app/main";
 function PagePaths(){
   return(
     <Routes>
-      <Route exact path="/" element={<Main />} />
-      <Route exact path="/descr" element={<ItemDescription />} />
+      <Route path="/" element={<Main />} />
+      <Route path="/descr" element={<ItemDescription />} />
     </Routes>
   )
 }

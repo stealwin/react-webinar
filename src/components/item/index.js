@@ -7,20 +7,21 @@ import ItemDescription from "../item-description";
 
 function Item({item, onAdd}) {
   return (
-    <div>
-    <Link to="/descr">
+
       <div className='Item'>
+        <Link to="/descr" state={{item}} className="Item__left" >
       <div className='Item__number'>{item.order}</div>
       <div className='Item__title'>{item.title}</div>
-      <div className='Item__right'>
+        </Link>
+        <div className='Item__right'>
         <div className='Item__price'>{numberFormat(item.price)} ₽</div>
-        <button onClick={() => onAdd(item._id)}>Добавить</button>
+
+      <button onClick={() => onAdd(item._id)}>Добавить</button>
       </div>
     </div>
 
-    </Link>
 
-    </div>
+
 
   )
 }
