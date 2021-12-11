@@ -9,7 +9,8 @@ import useStore from "../../utils/use-store";
 import Item from "../item";
 
 function ItemDescription(){
-  console.log(useLocation());
+  const id = useLocation().state.item._id;
+  console.log(id);
   const select = useSelector(state => ({
     items: state.catalog.items,
     items_count:state.catalog.all_items_count,
@@ -19,13 +20,14 @@ function ItemDescription(){
 
 
   // Загрузка тестовых данных при первом рендере
-/*  useEffect(async () => {
-    await store.catalog.load(store.catalog.limit,0);
-    store.catalog.pagination();
-  }, []);*/
+  useEffect(async () => {
+    /*await store.catalog.load(store.catalog.limit,0);
+    store.catalog.pagination();*/
+    await store.catalog.loadById(id);
+  }, []);
 
   const store = useStore();
-  console.log(store.catalog.pagination())
+  console.log(store.state.catalog.selectedItem);
 
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
