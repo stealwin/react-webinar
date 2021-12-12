@@ -10,16 +10,16 @@ import Item from "../item";
 
 function ItemDescription(){
   const id = useLocation().state.item._id;
-  let itemDetail = {};
+  const item = useLocation().state.item;
+  console.log(item);
   const select = useSelector(state => ({
-
-    description:state.description.description,
-    header:state.description.title,
-    country:state.description.maidIn,
+    items: state.catalog.items,
+    items_count:state.catalog.all_items_count,
+    descr: state.description,
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
-  console.log(select.country)
+  console.log(select.descr)
 
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {
@@ -40,13 +40,18 @@ function ItemDescription(){
       return <Item item={item} onAdd={callbacks.addToBasket}/>
     }, [callbacks.addToBasket]),
   }
-  return <Layout head={<h1>{select.header}</h1>}>
+  return <Layout head={<h1>{select.descr.title}</h1>}>
     <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>
         <div className="ItemDescription__wrapper">
-        <div className="ItemDescription__text">{select.description}</div>
+        <div className="ItemDescription__text">{select.descr.description}</div>
           <br/>
-          <div className="ItemDescription__country">Страна производитель: </div>
+          <div className="ItemDescription__country">Страна производитель:{select.descr.maidIn?.title} </div>
+          <div className="ItemDescription__category">Категория:{select.descr.category?.title} </div>
+          <div className="ItemDescription__year">Год:{select.descr.edition} </div>
+          <div className="ItemDescription__price">Цена:{select.descr.price} </div>
+
         </div>
+        <button onClick={() => callbacks.addToBasket(item._id)}>Добавить</button>
         </Layout>
 
 }
