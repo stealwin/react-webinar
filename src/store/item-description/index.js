@@ -12,15 +12,12 @@ class ItemDescriptionStore extends CatalogStore {
     };
   }
 
-
-
-
   async loadById(id){
     const response = await fetch('/api/v1/articles/'+id+'?fields=*,maidIn(title,code),category(title)');
     const json = await response.json();
-    this.setState({
-      selectedItem:json.result
-    });
+    this.setState(
+      json.result
+    );
   }
 
 }

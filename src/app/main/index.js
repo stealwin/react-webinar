@@ -18,7 +18,6 @@ function Main() {
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
-  console.log(catalog);
 
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {

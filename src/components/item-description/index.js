@@ -7,30 +7,26 @@ import Layout from "../layout";
 import useSelector from "../../utils/use-selector";
 import useStore from "../../utils/use-store";
 import Item from "../item";
+import {itemDescription} from "../../store/exports";
 
 function ItemDescription(){
   const id = useLocation().state.item._id;
   console.log(id);
   const select = useSelector(state => ({
-    items: state.catalog.items,
-    items_count:state.catalog.all_items_count,
+   /* items: state.catalog.items,
+    items_count:state.catalog.all_items_count,*/
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
 
 
   // Загрузка тестовых данных при первом рендере
-  useEffect(async () => {
-    /*await store.catalog.load(store.catalog.limit,0);
-    store.catalog.pagination();*/
-    await store.catalog.loadById(id);
-  }, []);
+/*  useEffect(async () => {
+    await store.modules.itemDescription.loadById(id);
+  }, []);*/
 
   const store = useStore();
-  async () => {await store.catalog.loadById(id)}
-  console.log(store.state);
 
-  console.log()
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
     openModal: useCallback(() => store.modals.open('basket'), [store]),

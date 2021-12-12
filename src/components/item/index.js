@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import propTypes from 'prop-types';
 import './styles.css';
 import numberFormat from "../../utils/number-format";
 import {Link, Route, Routes} from "react-router-dom";
 import ItemDescription from "../item-description";
+import useStore from "../../utils/use-store";
 
 function Item({item, onAdd}) {
+
+  useEffect(async () => {
+    await store.modules.itemDescription.loadById(id);
+  }, []);
+
+  const store = useStore();
+
+  console.log(store.state);
+
   return (
 
       <div className='Item'>
