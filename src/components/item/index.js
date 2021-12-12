@@ -7,16 +7,6 @@ import ItemDescription from "../item-description";
 import useStore from "../../utils/use-store";
 
 function Item({item, onAdd}) {
-
-  const store = useStore();
-
-  useEffect(async () => {
-    await store.description.loadById(item._id);
-  }, []);
-
-  console.log(store.getState().description);
-
-
   return (
 
       <div className='Item'>

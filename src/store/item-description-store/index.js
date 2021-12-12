@@ -13,6 +13,7 @@ class ItemDescriptionStore extends StoreModule {
   }
 
   async loadById(id){
+   // this.setState({});
     const response = await fetch('/api/v1/articles/'+id+'?fields=*,maidIn(title,code),category(title)');
     const json = await response.json();
     this.setState(

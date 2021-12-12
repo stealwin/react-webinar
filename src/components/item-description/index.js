@@ -7,25 +7,28 @@ import Layout from "../layout";
 import useSelector from "../../utils/use-selector";
 import useStore from "../../utils/use-store";
 import Item from "../item";
-import {itemDescription} from "../../store/exports";
 
 function ItemDescription(){
   const id = useLocation().state.item._id;
+  let itemDetail = {};
   const select = useSelector(state => ({
-   /* items: state.catalog.items,
-    items_count:state.catalog.all_items_count,*/
+
+    description:state.description.description,
+    header:state.description.title,
+    country:state.description.maidIn,
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
-
+  console.log(select.country)
 
   // Загрузка тестовых данных при первом рендере
-/*  useEffect(async () => {
-    await store.modules.itemDescription.loadById(id);
-  }, []);*/
+  useEffect(async () => {
+    await store.description.loadById(id);
+  }, []);
+
 
   const store = useStore();
-  console.log(store.state.description);
+
 
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
@@ -37,13 +40,12 @@ function ItemDescription(){
       return <Item item={item} onAdd={callbacks.addToBasket}/>
     }, [callbacks.addToBasket]),
   }
-  return <Layout head={<h1>{useLocation().state.item.title}</h1>}>
+  return <Layout head={<h1>{select.header}</h1>}>
     <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>
-      {/* <List items={select.items} renderItem={renders.item}/>*/}
         <div className="ItemDescription__wrapper">
-        <div className="ItemDescription__text">{useLocation().state.item.description}</div>
+        <div className="ItemDescription__text">{select.description}</div>
           <br/>
-          <div className="ItemDescription__country">{useLocation().state.item.title}</div>
+          <div className="ItemDescription__country">Страна производитель: </div>
         </div>
         </Layout>
 
