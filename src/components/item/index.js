@@ -7,14 +7,13 @@ import ItemDescription from "../item-description";
 import useStore from "../../utils/use-store";
 
 function Item({item, onAdd}) {
-
-  useEffect(async () => {
-    await store.modules.itemDescription.loadById(id);
-  }, []);
-
+  console.log(item._id)
+  /*useEffect(async () => {
+    await store.modules.itemDescription.loadById(item._id);
+  }, []);*/
+  async () => {await store.modules.itemDescription.loadById(item._id)}
   const store = useStore();
 
-  console.log(store.state);
 
   return (
 

@@ -17,6 +17,8 @@ class Store {
     const names = Object.keys(modules);
     for (const name of names) {
       // Экземпляр модуля
+
+
       this.modules[name] = new modules[name](this, name);
       // Состояние по умочланию от модуля
       this.state[name] = this.modules[name].initState();
@@ -86,9 +88,9 @@ class Store {
     return this.get('catalog');
   }
   /**
-   * @return {CatalogStore}
+   * @return {ItemDescriptionStore}
    */
-  get itemDescription(){
+  get description(){
     return this.get('description');
   }
 }

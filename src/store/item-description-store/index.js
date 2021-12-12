@@ -1,4 +1,3 @@
-import StoreModule from "../module";
 import CatalogStore from "../catalog";
 
 class ItemDescriptionStore extends CatalogStore {
