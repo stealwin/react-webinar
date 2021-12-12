@@ -13,11 +13,13 @@ const store = new Store(modules);
 
 // Сообщаем реакту что и куда рендерить.
 ReactDOM.render(
-  <BrowserRouter>
+
   <StoreProvider store={store}>
+    <BrowserRouter>
     <App/>
-  </StoreProvider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </StoreProvider>,
+
 
 root
 );

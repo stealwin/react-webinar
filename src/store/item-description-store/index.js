@@ -1,6 +1,7 @@
 import CatalogStore from "../catalog";
+import StoreModule from "../module";
 
-class ItemDescriptionStore extends CatalogStore {
+class ItemDescriptionStore extends StoreModule {
 
   /**
    * Начальное состояние

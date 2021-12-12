@@ -11,7 +11,6 @@ import {itemDescription} from "../../store/exports";
 
 function ItemDescription(){
   const id = useLocation().state.item._id;
-  console.log(id);
   const select = useSelector(state => ({
    /* items: state.catalog.items,
     items_count:state.catalog.all_items_count,*/
@@ -26,6 +25,7 @@ function ItemDescription(){
   }, []);*/
 
   const store = useStore();
+  console.log(store.state.description);
 
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
