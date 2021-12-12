@@ -18,7 +18,7 @@ function Main() {
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
-
+  console.log(catalog);
 
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {
@@ -27,7 +27,6 @@ function Main() {
   }, []);
 
   const store = useStore();
-  console.log(store.catalog.pagination())
 
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),

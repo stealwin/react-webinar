@@ -27,8 +27,10 @@ function ItemDescription(){
   }, []);
 
   const store = useStore();
-  console.log(store.state.catalog.selectedItem);
+  async () => {await store.catalog.loadById(id)}
+  console.log(store.state);
 
+  console.log()
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
     openModal: useCallback(() => store.modals.open('basket'), [store]),

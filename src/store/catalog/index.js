@@ -3,6 +3,7 @@ import StoreModule from "../module";
 class CatalogStore extends StoreModule {
  countItems;
   limit=10;
+  selec;
   isSelected=false;
   /**
    * Начальное состояние
@@ -35,6 +36,7 @@ class CatalogStore extends StoreModule {
     const response = await fetch('/api/v1/articles/'+id+'?fields=*,maidIn(title,code),category(title)');
     const json = await response.json();
     this.setState({
+      ...this.getState(),
       selectedItem:json.result
     });
   }
