@@ -8,8 +8,7 @@ import useStore from "../../utils/use-store";
 function ItemBasket({item}) {
   const store = useStore();
   const callbacks = {
-    closeModal: useCallback(() => store.modals.close(), [store]),
-    openModal: useCallback(() => store.modals.open('basket'), [store])
+    closeModal: useCallback(() => store.modals.close(), [store])
   }
   return (
     <div className='ItemBasket'>

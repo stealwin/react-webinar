@@ -2,7 +2,7 @@ import React, {useCallback, useEffect} from 'react';
 import './styles.css';
 import BasketSimple from "../basket-simple";
 import List from "../list";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import Layout from "../layout";
 import useSelector from "../../utils/use-selector";
 import useStore from "../../utils/use-store";
@@ -18,19 +18,20 @@ function ItemDescription(){
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
+  const navigate = useNavigate();
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {
     await store.description.loadById(id);
   }, []);
 
-  console.log(select.descr)
 
   const store = useStore();
 
 
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
-    openModal: useCallback(() => store.modals.open('basket'), [store]),
+    openModal: useCallback(() => {store.modals.open('basket');
+      return  navigate('/',{replace:true})}, [store]),
   }
 
   const renders = {

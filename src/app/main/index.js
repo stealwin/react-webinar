@@ -1,14 +1,11 @@
 import React, {useCallback, useEffect} from "react";
 import Item from "../../components/item";
 import Layout from "../../components/layout";
-import ItemDescription from "../../components/item-description"
 import BasketSimple from "../../components/basket-simple";
 import List from "../../components/list";
 import Pagination from "../../components/pagination";
-import {Route, Routes, Link, BrowserRouter, NavLink} from "react-router-dom";
 import useStore from "../../utils/use-store";
 import useSelector from "../../utils/use-selector";
-import {catalog} from "../../store/exports";
 
 function Main() {
 
