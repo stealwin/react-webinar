@@ -11,7 +11,6 @@ import Item from "../item";
 function ItemDescription(){
   const id = useLocation().state.item._id;
   const item = useLocation().state.item;
-  console.log(item);
   const select = useSelector(state => ({
     items: state.catalog.items,
     items_count:state.catalog.all_items_count,
@@ -19,13 +18,12 @@ function ItemDescription(){
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
-  console.log(select.descr)
-
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {
     await store.description.loadById(id);
   }, []);
 
+  console.log(select.descr)
 
   const store = useStore();
 

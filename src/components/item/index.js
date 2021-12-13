@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import propTypes from 'prop-types';
 import './styles.css';
 import numberFormat from "../../utils/number-format";
@@ -7,10 +7,11 @@ import ItemDescription from "../item-description";
 import useStore from "../../utils/use-store";
 
 function Item({item, onAdd}) {
+
   return (
 
       <div className='Item'>
-        <Link to="/descr" state={{item}} className="Item__left" >
+        <Link to="/descr" state={{item}} className="Item__left">
       <div className='Item__number'>{item.order}</div>
       <div className='Item__title'>{item.title}</div>
         </Link>

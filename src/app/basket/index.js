@@ -28,7 +28,7 @@ function Basket(){
 
   return (
     <LayoutModal title={'Корзина'} onClose={callbacks.closeModal}>
-      <List items={select.items} renderItem={renders.itemBasket}/>
+      <List items={select.items} renderItem={renders.itemBasket} linkClose={callbacks.closeModal}/>
       <BasketTotal amount={select.amount} sum={select.sum}/>
     </LayoutModal>
   )
