@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect} from 'react';
 import './styles.css';
 import BasketSimple from "../basket-simple";
-import List from "../list";
+import numberFormat from "../../utils/number-format";
 import {useLocation, useNavigate} from "react-router-dom";
 import Layout from "../layout";
 import useSelector from "../../utils/use-selector";
@@ -44,13 +44,15 @@ function ItemDescription(){
         <div className="ItemDescription__wrapper">
         <div className="ItemDescription__text">{select.descr.description}</div>
           <br/>
-          <div className="ItemDescription__country">Страна производитель:{select.descr.maidIn?.title} </div>
-          <div className="ItemDescription__category">Категория:{select.descr.category?.title} </div>
-          <div className="ItemDescription__year">Год:{select.descr.edition} </div>
-          <div className="ItemDescription__price">Цена:{select.descr.price} </div>
+          <div className="ItemDescription__country">Страна производитель: <b>{select.descr.maidIn?.title}</b></div>
+          <br/>
+          <div className="ItemDescription__category">Категория: <b>{select.descr.category?.title}</b> </div>
+          <br/>
+          <div className="ItemDescription__year">Год: <b>{select.descr.edition}</b> </div>
+          <div className="ItemDescription__price"><h2>Цена: {numberFormat(select.descr.price || 0)} ₽</h2> </div>
+          <button onClick={() => callbacks.addToBasket(item._id)}>Добавить</button>
 
         </div>
-        <button onClick={() => callbacks.addToBasket(item._id)}>Добавить</button>
         </Layout>
 
 }
