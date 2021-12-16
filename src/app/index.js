@@ -2,8 +2,9 @@ import React from 'react';
 import Main from "./main";
 import Basket from "./basket";
 import useSelector from "../utils/use-selector";
-import {Route,Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import ItemDescription from "../components/item-description";
+import Card from "./card";
 
 
 /**
@@ -18,8 +19,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/descr" element={<ItemDescription />} />
+        <Route path="/" element={<Main/>}/>
+        <Route path="/descr" element={<Card/>}/>
       </Routes>
       {select.name === 'basket' && <Basket/>}
     </>
