@@ -12,14 +12,14 @@ function Main() {
   const select = useSelector(state => ({
     items: state.catalog.items,
     items_count:state.catalog.all_items_count,
+    pages:state.catalog.pages,
     amount: state.basket.amount,
     sum: state.basket.sum
   }));
 
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {
-    await store.catalog.load(store.catalog.limit,0);
-    store.catalog.pagination();
+    await store.catalog.load(store.catalog.limit,1);
   }, []);
 
   const store = useStore();
@@ -40,7 +40,7 @@ function Main() {
       <Layout head={<h1>Магазин</h1>}>
       <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>
       <List items={select.items} renderItem={renders.item}/>
-      <Pagination pages={store.catalog.pagination()} catalog={store.catalog}></Pagination>
+      <Pagination pages={select.pages} catalog={store.catalog}></Pagination>
       </Layout>
 
   );
