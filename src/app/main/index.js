@@ -19,7 +19,7 @@ function Main() {
 
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {
-    await store.catalog.load(store.catalog.limit,1);
+    await store.catalog.load(10,1);
   }, []);
 
   const store = useStore();
