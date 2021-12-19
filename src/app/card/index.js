@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect} from 'react';
 import BasketSimple from "../../components/basket-simple";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Layout from "../../components/layout";
 import useSelector from "../../utils/use-selector";
 import useStore from "../../utils/use-store";
@@ -8,7 +8,7 @@ import Item from "../../components/item";
 import ItemDescription from "../../components/item-description";
 
 function Card() {
-  const id = useLocation().state.item._id;
+  let {id} = useParams();
   const select = useSelector(state => ({
     items: state.catalog.items,
     items_count: state.catalog.all_items_count,

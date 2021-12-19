@@ -11,9 +11,7 @@ function Item({item, onAdd}) {
   const select = useSelector(state => ({
     itemActive: item
   }));
-  let {id} = useParams();
-  id = item._id;
-  console.log(id)
+
   return (
 
       <div className='Item'>

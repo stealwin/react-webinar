@@ -1,12 +1,12 @@
 import React, {useCallback} from 'react';
 import './styles.css';
 import numberFormat from "../../utils/number-format";
-import {useLocation} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import useSelector from "../../utils/use-selector";
 import useStore from "../../utils/use-store";
 
 function ItemDescription() {
-  const id = useLocation().state.item._id;
+  let {id} = useParams();
   const select = useSelector(state => ({
     descr: state.description
   }));
