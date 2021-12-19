@@ -13,14 +13,14 @@ import Card from "./card";
 function App() {
 
   const select = useSelector(state => ({
-    name: state.modals.name
+    descr: state.description,
   }));
-
+  console.log(select.descr._id);
   return (
     <>
       <Routes>
         <Route path="/" element={<Main/>}/>
-        <Route path="/descr" element={<Card/>}/>
+        <Route path={"/articles/:id"} element={<Card/>}/>
       </Routes>
       {select.name === 'basket' && <Basket/>}
     </>
