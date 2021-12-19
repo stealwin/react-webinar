@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import propTypes from 'prop-types';
 import numberFormat from "../../utils/number-format";
 import './styles.css';
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import useStore from "../../utils/use-store";
 
 function ItemBasket({item}) {
@@ -12,7 +12,7 @@ function ItemBasket({item}) {
   }
   return (
     <div className='ItemBasket'>
-      <Link to="/descr" state={{item}} className="ItemBasket__left" onClick={callbacks.closeModal}>
+      <Link key={item._id} to={"/articles/"+item._id} state={{item}} className="ItemBasket__left" onClick={callbacks.closeModal}>
       <div className='ItemBasket__number'>{item._key}</div>
       <div className='ItemBasket__title'>{item.title}</div>
       </Link>

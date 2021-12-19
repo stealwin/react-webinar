@@ -8,10 +8,6 @@ import useStore from "../../utils/use-store";
 import useSelector from "../../utils/use-selector";
 
 function Item({item, onAdd}) {
-  const select = useSelector(state => ({
-    itemActive: item
-  }));
-
   return (
 
       <div className='Item'>

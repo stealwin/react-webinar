@@ -2,8 +2,7 @@ import React from 'react';
 import Main from "./main";
 import Basket from "./basket";
 import useSelector from "../utils/use-selector";
-import {Route, Routes} from "react-router-dom";
-import ItemDescription from "../components/item-description";
+import {Route, Routes, useParams} from "react-router-dom";
 import Card from "./card";
 
 
@@ -11,7 +10,6 @@ import Card from "./card";
  * Приложение
  */
 function App() {
-
   const select = useSelector(state => ({
     name: state.modals.name
   }));

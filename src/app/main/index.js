@@ -23,10 +23,23 @@ function Main() {
   }, []);
 
   const store = useStore();
-
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
     openModal: useCallback(() => store.modals.open('basket'), [store]),
+    renderPage:useCallback((number) =>{
+      let limit = store.catalog.getState().limit
+      for (let i=1; i<=select.pages;i++){
+        if (document.getElementById(i).classList.contains("Pagination__item-active")){
+          document.getElementById(i).classList.remove("Pagination__item-active");
+        }
+        if (number==i){
+          document.getElementById(number).classList.add("Pagination__item-active");
+
+          let startNumber = number-1;
+          store.catalog.load(limit,number);
+        }
+      }
+    })
   }
 
   const renders = {
@@ -40,7 +53,7 @@ function Main() {
       <Layout head={<h1>Магазин</h1>}>
       <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>
       <List items={select.items} renderItem={renders.item}/>
-      <Pagination pages={select.pages} catalog={store.catalog}></Pagination>
+      <Pagination pages={select.pages} createPages={callbacks.renderPage}></Pagination>
       </Layout>
 
   );
