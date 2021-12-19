@@ -13,9 +13,8 @@ import Card from "./card";
 function App() {
 
   const select = useSelector(state => ({
-    descr: state.description,
+    name: state.modals.name
   }));
-  console.log(select.descr._id);
   return (
     <>
       <Routes>
