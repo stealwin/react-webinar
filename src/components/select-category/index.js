@@ -4,6 +4,7 @@ import {cn} from '@bem-react/classname'
 import './styles.css';
 
 function SelectCategory(props){
+  console.log(props)
 
   // CSS классы по БЭМ
   const className = cn('SelectCategory');
@@ -118,7 +119,7 @@ function SelectCategory(props){
 
   }
 
-  console.log(categoryTree(props.options));
+ // console.log(categoryTree(props.options));
   return (
     <select className={className()} onChange={onSelect} value={props.value}>
       <option value={1}>Все</option>
