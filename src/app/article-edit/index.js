@@ -7,8 +7,9 @@ import Spinner from "../../components/spinner";
 import ArticleCard from "../../components/article-card";
 import Header from "../../containers/header";
 import useInit from "../../utils/use-init";
+import ArticleCardEdit from "../../components/article-card-edit";
 
-function Article() {
+function ArticleEdit() {
 
   const store = useStore();
   // Параметры из пути
@@ -23,7 +24,7 @@ function Article() {
     article: state.article.data,
     waiting: state.article.waiting,
   }));
-  console.log(select.article)
+
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
   }
@@ -34,11 +35,10 @@ function Article() {
       <Header/>
 
       <Spinner active={select.waiting}>
-        {/*/articles/:id/edit*/}
-        <ArticleCard article={select.article} onAdd={callbacks.addToBasket} link={`/articles/${select.article._id}/edit`}/>
+        <ArticleCardEdit article={select.article} onAdd={callbacks.addToBasket}/>
       </Spinner>
     </Layout>
   );
 }
 
-export default React.memo(Article);
+export default React.memo(ArticleEdit);

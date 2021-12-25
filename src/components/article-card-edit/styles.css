@@ -1,0 +1,27 @@
+/* Пункт списка */
+.ArticleCardEdit {
+  padding: 20px 35px;
+}
+
+.ArticleCardEdit-Description {
+  margin: 20px 0;
+}
+
+
+.ArticleCardEdit-Prop {
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ArticleCardEdit-Prop_size_big{
+  font-size: 24px;
+}
+
+.ArticleCardEdit-Label{
+  padding-right: 10px;
+}
+
+.ArticleCardEdit-Value{
+  font-weight: bold;
+}
