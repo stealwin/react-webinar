@@ -18,13 +18,15 @@ function ArticleEdit() {
   // Начальная загрузка
   useInit(async () => {
     await store.get('article').load(params.id);
+      await store.categories.loadCategories();
   }, [params.id]);
 
   const select = useSelector(state => ({
     article: state.article.data,
     waiting: state.article.waiting,
+    categories:state.categories.items
   }));
-
+  console.log(select.categories)
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
   }
@@ -35,7 +37,7 @@ function ArticleEdit() {
       <Header/>
 
       <Spinner active={select.waiting}>
-        <ArticleCardEdit article={select.article} onAdd={callbacks.addToBasket}/>
+        <ArticleCardEdit article={select.article} onAdd={callbacks.addToBasket} cat ={select.categories}/>
       </Spinner>
     </Layout>
   );

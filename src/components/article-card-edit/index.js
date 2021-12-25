@@ -4,8 +4,10 @@ import {cn} from '@bem-react/classname'
 import './styles.css';
 import numberFormat from "../../utils/number-format";
 import {Link} from "react-router-dom";
+import SelectCategory from "../select-category";
 
-function ArticleCardEdit({article, onAdd}) {
+function ArticleCardEdit({article, onAdd,cat}) {
+
 
   // CSS классы по БЭМ
   const className = cn('ArticleCardEdit');
@@ -21,16 +23,17 @@ function ArticleCardEdit({article, onAdd}) {
         <div>Страна производитель:</div>
         <div className={className('Label')}></div>
         <select className={className('Value')}>
-          <option>Страна</option>
+          <option>{article.maidIn?.title} </option>
         </select>
       </div>
 
       <div className={className('Prop')}>
         <div>Категория</div>
         <div className={className('Label')}></div>
-        <select className={className('Value')}>
-          <option>Категория</option>
-        </select>
+        <SelectCategory options={cat}></SelectCategory>
+        {/*<select className={className('Value')}>
+          <option>{article.category?.title}</option>
+        </select>*/}
       </div>
 
       <div className={className('Prop')}>
