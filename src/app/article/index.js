@@ -17,13 +17,17 @@ function Article() {
   // Начальная загрузка
   useInit(async () => {
     await store.get('article').load(params.id);
+    await store.get('articleEdit').load(params.id);
   }, [params.id]);
+
+
+
 
   const select = useSelector(state => ({
     article: state.article.data,
     waiting: state.article.waiting,
   }));
-  console.log(select.article)
+
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
   }

@@ -16,7 +16,6 @@ function CatalogFilter() {
     query: state.catalog.params.query,
     categories:state.categories.items
   }));
-  console.log(select.categories)
 
   useInit(async () => {
     await store.categories.loadCategories();

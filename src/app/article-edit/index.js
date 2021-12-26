@@ -17,18 +17,19 @@ function ArticleEdit() {
 
   // Начальная загрузка
   useInit(async () => {
-    await store.get('article').load(params.id);
+
     await store.categories.loadCategories();
     await store.countries.loadCountries();
+    await store.articleEdit.loadCountries();
   }, [params.id]);
 
   const select = useSelector(state => ({
     article: state.article.data,
     waiting: state.article.waiting,
     categories:state.categories.items,
-    countries:state.countries.items
+    countries:state.countries.items,
+    cont:state.articleEdit.countries
   }));
-  console.log(select.countries)
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
   }
@@ -40,7 +41,7 @@ function ArticleEdit() {
 
       <Spinner active={select.waiting}>
         <ArticleCardEdit article={select.article} onAdd={callbacks.addToBasket}
-                         cat ={select.categories} count={select.countries} />
+                         cat ={select.categories} count={select.cont} />
       </Spinner>
     </Layout>
   );

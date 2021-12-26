@@ -1,3 +1,5 @@
+import {articleEdit} from "./exports";
+
 /**
  * Хранилище состояния приложения
  */
@@ -96,6 +98,12 @@ class Store {
    */
   get countries(){
     return this.get('countries');
+  }
+  /**
+   * @return {ArticleEditStore}
+   */
+  get articleEdit(){
+    return this.get('articleEdit');
   }
 }
 
