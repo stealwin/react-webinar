@@ -6,8 +6,9 @@ import numberFormat from "../../utils/number-format";
 import {Link} from "react-router-dom";
 import SelectCategory from "../select-category";
 
-function ArticleCardEdit({article, onAdd,cat}) {
+function ArticleCardEdit({article, onAdd,cat,count}) {
 
+    let isArticleEdit = true;
 
   // CSS классы по БЭМ
   const className = cn('ArticleCardEdit');
@@ -16,21 +17,22 @@ function ArticleCardEdit({article, onAdd,cat}) {
     <div className={className()}>
 
       <div>Название:</div>
-      <input className={className('Name')} value={article.title}></input>
+      <input className={className('Name')} defaultValue={article.title}></input>
       <div>Описание</div>
-      <input className={className('Description')} value={article.description}></input>
+      <input className={className('Description')} defaultValue={article.description}></input>
       <div className={className('Prop')}>
         <div>Страна производитель:</div>
         <div className={className('Label')}></div>
-        <select className={className('Value')}>
+        <SelectCategory options={count} isEdit = {isArticleEdit}></SelectCategory>
+       {/* <select className={className('Value')}>
           <option>{article.maidIn?.title} </option>
-        </select>
+        </select>*/}
       </div>
 
       <div className={className('Prop')}>
         <div>Категория</div>
         <div className={className('Label')}></div>
-        <SelectCategory options={cat}></SelectCategory>
+        <SelectCategory options={cat} isEdit = {isArticleEdit}></SelectCategory>
         {/*<select className={className('Value')}>
           <option>{article.category?.title}</option>
         </select>*/}
@@ -39,12 +41,12 @@ function ArticleCardEdit({article, onAdd,cat}) {
       <div className={className('Prop')}>
         <div>Год выпуска</div>
         <div className={className('Label')}></div>
-        <input className={className('Value')} value={article.edition}></input>
+        <input className={className('Value')}  defaultValue={article.edition}></input>
       </div>
       <div className={className('Prop', {/*{size: 'big'}*/})}>
         <div>Цена (₽)</div>
         <div className={className('Label')}></div>
-        <input className={className('Value')} value={numberFormat(article.price)}></input>
+        <input className={className('Value')}  defaultValue={numberFormat(article.price)}></input>
 
       </div>
 
