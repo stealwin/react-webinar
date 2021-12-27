@@ -18,15 +18,15 @@ function ArticleEdit() {
 
   // Начальная загрузка
   useInit(async () => {
-
+    await store.get('articleEdit').load(params.id);
     await store.categories.loadCategories();
-    await store.countries.loadCountries();
+    //await store.countries.loadCountries();
     await store.articleEdit.loadCountries();
   }, [params.id]);
 
   const select = useSelector(state => ({
-    article: state.article.data,
-    waiting: state.article.waiting,
+    article: state.articleEdit.data,
+    waiting: state.articleEdit.waiting,
     categories:state.categories.items,
     cont:state.articleEdit.countries,
     editedTitle:state.articleEdit.editData.title
