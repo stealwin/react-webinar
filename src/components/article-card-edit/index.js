@@ -6,7 +6,7 @@ import numberFormat from "../../utils/number-format";
 import {Link} from "react-router-dom";
 import SelectCategory from "../select-category";
 
-function ArticleCardEdit({article, onAdd,cat,count}) {
+function ArticleCardEdit({article, onAdd,cat,count, sendEdit}) {
 
     let isArticleEdit = true;
 
@@ -50,7 +50,7 @@ function ArticleCardEdit({article, onAdd,cat,count}) {
 
       </div>
 
-      <button onClick={() => onAdd(article._id)}>Сохранить</button>
+      <button onClick={() => sendEdit(article)}>Сохранить</button>
     </div>
   )
 }

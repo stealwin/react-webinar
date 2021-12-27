@@ -4,7 +4,6 @@ import {cn} from '@bem-react/classname'
 import './styles.css';
 
 function SelectCategory(props){
-  console.log(props)
 
   // CSS классы по БЭМ
   const className = cn('SelectCategory');

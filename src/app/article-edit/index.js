@@ -8,6 +8,7 @@ import ArticleCard from "../../components/article-card";
 import Header from "../../containers/header";
 import useInit from "../../utils/use-init";
 import ArticleCardEdit from "../../components/article-card-edit";
+import {article} from "../../store/exports";
 
 function ArticleEdit() {
 
@@ -32,6 +33,7 @@ function ArticleEdit() {
   }));
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
+    sendEditArticle:useCallback((item)=>store.articleEdit.putEditArticle(item),[store])
   }
 
   return (
@@ -41,7 +43,7 @@ function ArticleEdit() {
 
       <Spinner active={select.waiting}>
         <ArticleCardEdit article={select.article} onAdd={callbacks.addToBasket}
-                         cat ={select.categories} count={select.cont} />
+                         cat ={select.categories} count={select.cont} sendEdit={callbacks.sendEditArticle} />
       </Spinner>
     </Layout>
   );

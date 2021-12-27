@@ -45,12 +45,31 @@ class ArticleEditStore extends StoreModule {
   async loadCountries(){
     const responseCategories = await fetch(`api/v1/countries?limit=*&fields=_id,title,code&sort=title.ru`);
     const jsonCategories = await responseCategories.json();
-    console.log(jsonCategories.result.items)
     this.updateState({
       countries:jsonCategories.result.items
 
     })
   }
+
+  async putEditArticle(article){
+    const itemHeader = document.querySelector(".ArticleCardEdit-Name").value;
+    const itemDescr = document.querySelector(".ArticleCardEdit-Description").value;
+    article.title = itemHeader;
+    article.description = itemDescr;
+    console.log(itemHeader)
+    console.log(article)
+    const response2 = await fetch(`/api/v1/articles/${article._id}`,{
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(article)
+    });
+    const json = await response2.json();
+    console.log(json);
+
+  }
+
 
 }
 
