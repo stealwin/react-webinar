@@ -71,6 +71,18 @@ class CatalogStore extends StoreModule {
   async setParams(params = {}, historyReplace = false){
     const newParams = {...this.getState().params, ...params};
 
+    let arr = []
+    arr = this.getState().items.filter(item=>{
+      if (item.category._id==newParams.sort){
+        return item
+      } else {
+        return
+      }
+    });
+    console.log(newParams);
+
+
+
     this.setState({
       ...this.getState(),
       params: newParams,

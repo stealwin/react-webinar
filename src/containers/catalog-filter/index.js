@@ -17,7 +17,6 @@ function CatalogFilter() {
     categories:state.categories.items,
     modifiedCategories:state.categories.modifiedItems
   }));
-  console.log(select.modifiedCategories);
 
   useInit(async () => {
     await store.categories.loadCategories();
@@ -45,7 +44,7 @@ function CatalogFilter() {
 
   return (
     <LayoutTools>
-      <SelectCategory onChange={callbacks.onSort} value={select.sort} options={select?.modifiedCategories}></SelectCategory>
+      <SelectCategory onChange={callbacks.onSort} value={select.sort} options={select.modifiedCategories}></SelectCategory>
       <Input onChange={callbacks.onSearch} value={select.query} placeholder={'Поиск'} theme="big"/>
       <label>Сортировка:</label>
       <Select onChange={callbacks.onSort} value={select.sort} options={options.sort}/>

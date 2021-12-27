@@ -1,4 +1,5 @@
 import StoreModule from "../module";
+import {func} from "prop-types";
 
 class CategoriesStore extends StoreModule{
   /**
@@ -21,8 +22,7 @@ class CategoriesStore extends StoreModule{
   }
 
   getFullTree (rootArray)  {
-    console.log(rootArray);
-    const getTree = (array, parent = null, inner = 0) => {
+    function getTree (array, parent = null, inner = 0){
       return array.reduce((arr, elem) => {
         if (elem.parent && elem.parent._id !== parent) {
           return arr;
@@ -41,10 +41,14 @@ class CategoriesStore extends StoreModule{
         return arr.concat(childArr);
       }, []);
     }
-    return this.setState({
+    return this.updateState({
             ...this.getState(),
            modifiedItems: getTree(rootArray)
     })
+  }
+
+  getSelectCategory(itemId){
+    let selectedCategory = document.querySelector(".SelectCategory").value;
   }
 
 
