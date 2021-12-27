@@ -47,9 +47,7 @@ class CategoriesStore extends StoreModule{
     })
   }
 
-  getSelectCategory(itemId){
-    let selectedCategory = document.querySelector(".SelectCategory").value;
-  }
+
 
 
 }

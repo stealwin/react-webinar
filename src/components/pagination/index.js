@@ -52,7 +52,7 @@ function Pagination(props) {
 
 Pagination.propTypes = {
   page: propTypes.number.isRequired,
-  limit: propTypes.number,
+  //limit: propTypes.number,
   count: propTypes.number,
   onChange: propTypes.func
 }

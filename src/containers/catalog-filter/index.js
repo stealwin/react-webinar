@@ -15,9 +15,8 @@ function CatalogFilter() {
     sort: state.catalog.params.sort,
     query: state.catalog.params.query,
     categories:state.categories.items,
-    modifiedCategories:state.categories.modifiedItems
+    modifiedCategories:state.categories.modifiedItems,
   }));
-
   useInit(async () => {
     await store.categories.loadCategories();
   } );
@@ -37,14 +36,17 @@ function CatalogFilter() {
   }
 
   const callbacks = {
-    onSort: useCallback((sort,isFiltered) => store.catalog.setParams({sort, isFiltered}), [store]),
+    onSort: useCallback((sort) => store.catalog.setParams({sort}), [store]),
     onSearch: useCallback(query => store.catalog.setParams({query, page: 1}), [store]),
+    categorySort: useCallback(category => store.catalog.setParams({category, page: 1}), [store]),
     onReset: useCallback(() => store.catalog.resetParams(), [store])
   }
 
   return (
     <LayoutTools>
-      <SelectCategory onChange={callbacks.onSort} value={select.sort} options={select.modifiedCategories} isFiltered={true}></SelectCategory>
+      <Select onChange={callbacks.categorySort}  options={select.modifiedCategories}
+              main={<option key={Symbol} value={''}>Все</option>}/>
+      {/*<SelectCategory onChange={callbacks.categorySort} value={select.sort} options={select.modifiedCategories}></SelectCategory>*/}
       <Input onChange={callbacks.onSearch} value={select.query} placeholder={'Поиск'} theme="big"/>
       <label>Сортировка:</label>
       <Select onChange={callbacks.onSort} value={select.sort} options={options.sort}/>

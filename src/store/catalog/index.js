@@ -27,7 +27,7 @@ class CatalogStore extends StoreModule {
         limit: 10,
         sort: 'key',
         query: '',
-        isFiltered:false
+        category: ''
       },
       waiting: true
     };
@@ -47,6 +47,7 @@ class CatalogStore extends StoreModule {
     if (urlParams.limit) validParams.limit = Number(urlParams.limit) || 10;
     if (urlParams.sort) validParams.sort = urlParams.sort;
     if (urlParams.query) validParams.query = urlParams.query;
+    if (urlParams.category) validParams.category = urlParams.category;
 
     // Итоговые параметры из начальных, из URL и из переданных явно
     const newParams = {...this.initState().params, ...validParams, ...params};
@@ -70,22 +71,24 @@ class CatalogStore extends StoreModule {
    * Загрузка списка товаров
    */
   async setParams(params = {}, historyReplace = false){
-    let newParams = {...this.getState().params, ...params};
-    console.log(params.sort);
 
+    let newParams = {...this.getState().params, ...params};
 
     const skip = (newParams.page - 1) * newParams.limit;
-    const response = await fetch(`/api/v1/articles?limit=${newParams.limit}&skip=${skip}&fields=items(*),count&sort=${newParams.sort}&search[query]=${newParams.query}`);
+    const response = await fetch(`/api/v1/articles?limit=${newParams.limit}&skip=${skip}&fields=items(*),count&sort=${newParams.sort}${newParams.category !== '' ? '&search[category]='+newParams.category : ''}&search[query]=${newParams.query}`);
     const json = await response.json();
 
     this.setState({
       ...this.getState(),
       items: json.result.items,
+      params:newParams,
       count: json.result.count,
       waiting: false
     });
-    if(params.isFiltered && params.sort!=="all"){
-      let arr = []
+
+
+
+     /* let arr = []
       arr = this.getState().items.filter(item=>{
         if (item.category._id==newParams.sort){
           return item
@@ -94,15 +97,14 @@ class CatalogStore extends StoreModule {
         }
       });
       newParams = {...this.getState().params,...params,limit:"*"}
+      console.log(newParams)
 
-      this.setState({
+      this.updateState({
         ...this.getState(),
         items:arr,
         params: newParams,
         waiting: false
-      });
-    }
-
+      });*/
 
     // Запоминаем параметры в URL
     let queryString = qs.stringify(newParams, QS_OPTIONS.stringify);

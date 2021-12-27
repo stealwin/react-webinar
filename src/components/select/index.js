@@ -4,7 +4,7 @@ import {cn} from '@bem-react/classname'
 import './styles.css';
 
 function Select(props){
-
+  console.log(props)
   // CSS классы по БЭМ
   const className = cn('Select');
 
@@ -14,8 +14,9 @@ function Select(props){
 
   return (
     <select className={className()} onChange={onSelect} value={props.value}>
+      {props.main === undefined ? null : props.main}
       {props.options.map(item => (
-        <option key={item.value} value={item.value}>{item.title}</option>
+        <option key={item.value || item._id} value={item.value || item._id}>{item.title}</option>
       ))}
     </select>
   )
