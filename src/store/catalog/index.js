@@ -26,7 +26,8 @@ class CatalogStore extends StoreModule {
         page: 1,
         limit: 10,
         sort: 'key',
-        query: ''
+        query: '',
+        isFiltered:false
       },
       waiting: true
     };
@@ -69,25 +70,9 @@ class CatalogStore extends StoreModule {
    * Загрузка списка товаров
    */
   async setParams(params = {}, historyReplace = false){
-    const newParams = {...this.getState().params, ...params};
+    let newParams = {...this.getState().params, ...params};
+    console.log(params.sort);
 
-    let arr = []
-    arr = this.getState().items.filter(item=>{
-      if (item.category._id==newParams.sort){
-        return item
-      } else {
-        return
-      }
-    });
-    console.log(newParams);
-
-
-
-    this.setState({
-      ...this.getState(),
-      params: newParams,
-      waiting: true
-    });
 
     const skip = (newParams.page - 1) * newParams.limit;
     const response = await fetch(`/api/v1/articles?limit=${newParams.limit}&skip=${skip}&fields=items(*),count&sort=${newParams.sort}&search[query]=${newParams.query}`);
@@ -99,6 +84,25 @@ class CatalogStore extends StoreModule {
       count: json.result.count,
       waiting: false
     });
+    if(params.isFiltered && params.sort!=="all"){
+      let arr = []
+      arr = this.getState().items.filter(item=>{
+        if (item.category._id==newParams.sort){
+          return item
+        } else {
+          return
+        }
+      });
+      newParams = {...this.getState().params,...params,limit:"*"}
+
+      this.setState({
+        ...this.getState(),
+        items:arr,
+        params: newParams,
+        waiting: false
+      });
+    }
+
 
     // Запоминаем параметры в URL
     let queryString = qs.stringify(newParams, QS_OPTIONS.stringify);

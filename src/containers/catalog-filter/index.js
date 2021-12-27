@@ -37,14 +37,14 @@ function CatalogFilter() {
   }
 
   const callbacks = {
-    onSort: useCallback(sort => store.catalog.setParams({sort}), [store]),
+    onSort: useCallback((sort,isFiltered) => store.catalog.setParams({sort, isFiltered}), [store]),
     onSearch: useCallback(query => store.catalog.setParams({query, page: 1}), [store]),
     onReset: useCallback(() => store.catalog.resetParams(), [store])
   }
 
   return (
     <LayoutTools>
-      <SelectCategory onChange={callbacks.onSort} value={select.sort} options={select.modifiedCategories}></SelectCategory>
+      <SelectCategory onChange={callbacks.onSort} value={select.sort} options={select.modifiedCategories} isFiltered={true}></SelectCategory>
       <Input onChange={callbacks.onSearch} value={select.query} placeholder={'Поиск'} theme="big"/>
       <label>Сортировка:</label>
       <Select onChange={callbacks.onSort} value={select.sort} options={options.sort}/>

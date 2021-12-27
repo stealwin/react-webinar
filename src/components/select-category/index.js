@@ -4,18 +4,17 @@ import {cn} from '@bem-react/classname'
 import './styles.css';
 
 function SelectCategory(props){
-
+  console.log(props)
   // CSS классы по БЭМ
   const className = cn('SelectCategory');
-
   const onSelect = useCallback((e) => {
-    props.onChange(e.target.value);
+    props.onChange(e.target.value,props.isFiltered);
   }, [props.onChange])
 
 
   return (
     <select className={className()+(props.class ? props.class : "")} onChange={onSelect} value={props.value}>
-      {!props.isEdit && <option value={1}>Все</option>}
+      {!props.isEdit && <option value="all">Все</option>}
       {props.options.map(item => (
         <option key={item._id} value={item._id}>{item.title}</option>
       ))}

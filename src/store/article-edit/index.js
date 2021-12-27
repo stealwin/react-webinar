@@ -74,7 +74,6 @@ class ArticleEditStore extends StoreModule {
           category:itemSelectedCategory
       }
     });
-    console.log(this.getState().editData);
     let editedArticle = this.getState().editData;
     const response = await fetch(`/api/v1/articles/${editedArticle._id}`,{
       method: 'PUT',
