@@ -10,6 +10,7 @@ function ArticleCardEdit({article, onAdd,cat,count, sendEdit}) {
 
     let isArticleEdit = true;
 
+
   // CSS классы по БЭМ
   const className = cn('ArticleCardEdit');
 
@@ -23,7 +24,7 @@ function ArticleCardEdit({article, onAdd,cat,count, sendEdit}) {
       <div className={className('Prop')}>
         <div>Страна производитель:</div>
         <div className={className('Label')}></div>
-        <SelectCategory options={count} isEdit = {isArticleEdit}></SelectCategory>
+        <SelectCategory  options={count} isEdit = {isArticleEdit} class ="-country"></SelectCategory>
        {/* <select className={className('Value')}>
           <option>{article.maidIn?.title} </option>
         </select>*/}
@@ -32,7 +33,7 @@ function ArticleCardEdit({article, onAdd,cat,count, sendEdit}) {
       <div className={className('Prop')}>
         <div>Категория</div>
         <div className={className('Label')}></div>
-        <SelectCategory options={cat} isEdit = {isArticleEdit}></SelectCategory>
+        <SelectCategory options={cat} isEdit = {isArticleEdit} class ="-category"></SelectCategory>
         {/*<select className={className('Value')}>
           <option>{article.category?.title}</option>
         </select>*/}
@@ -41,16 +42,16 @@ function ArticleCardEdit({article, onAdd,cat,count, sendEdit}) {
       <div className={className('Prop')}>
         <div>Год выпуска</div>
         <div className={className('Label')}></div>
-        <input className={className('Value')}  defaultValue={article.edition}></input>
+        <input className={className('Value--Year')}  defaultValue={article.edition}></input>
       </div>
-      <div className={className('Prop', {/*{size: 'big'}*/})}>
+      <div className={className('Prop')}>
         <div>Цена (₽)</div>
         <div className={className('Label')}></div>
-        <input className={className('Value')}  defaultValue={numberFormat(article.price)}></input>
+        <input className={className('Value--Price')}  defaultValue={article.price}></input>
 
       </div>
 
-      <button onClick={() => sendEdit(article)}>Сохранить</button>
+      <button onClick={() => sendEdit(article,cat)}>Сохранить</button>
     </div>
   )
 }

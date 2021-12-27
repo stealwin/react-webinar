@@ -28,22 +28,20 @@ function ArticleEdit() {
     article: state.article.data,
     waiting: state.article.waiting,
     categories:state.categories.items,
-    countries:state.countries.items,
-    cont:state.articleEdit.countries
+    cont:state.articleEdit.countries,
+    editedTitle:state.articleEdit.editData.title
   }));
   const callbacks = {
-    addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
-    sendEditArticle:useCallback((item)=>store.articleEdit.putEditArticle(item),[store])
+    sendEditArticle:useCallback((item,categories)=>store.articleEdit.putEditArticle(item,categories),[store])
   }
 
   return (
-    <Layout head={<h1>{select.article.title}</h1>}>
+    <Layout head={<h1>{select.editedTitle ? select.editedTitle : select.article.title}</h1>}>
 
       <Header/>
 
       <Spinner active={select.waiting}>
-        <ArticleCardEdit article={select.article} onAdd={callbacks.addToBasket}
-                         cat ={select.categories} count={select.cont} sendEdit={callbacks.sendEditArticle} />
+        <ArticleCardEdit article={select.article} cat ={select.categories} count={select.cont} sendEdit={callbacks.sendEditArticle} />
       </Spinner>
     </Layout>
   );

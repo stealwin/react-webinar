@@ -39,7 +39,7 @@ function Article() {
 
       <Spinner active={select.waiting}>
         {/*/articles/:id/edit*/}
-        <ArticleCard article={select.article} onAdd={callbacks.addToBasket} link={`/articles/${select.article._id}/edit`}/>
+        <ArticleCard article={select.article} onAdd={callbacks.addToBasket} link={`/articles/edit/${select.article._id}`}/>
       </Spinner>
     </Layout>
   );

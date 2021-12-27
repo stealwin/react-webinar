@@ -6,9 +6,11 @@ import numberFormat from "../../utils/number-format";
 import {Link} from "react-router-dom";
 
 function ArticleCard({article, onAdd,link}) {
+  console.log(link)
 
   // CSS классы по БЭМ
   const className = cn('ArticleCard');
+
 
   return (
     <div className={className()}>

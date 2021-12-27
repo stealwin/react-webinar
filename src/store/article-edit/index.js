@@ -10,6 +10,7 @@ class ArticleEditStore extends StoreModule {
     return {
       data: {},
       countries:[],
+      editData:{},
       waiting: true
     };
   }
@@ -51,21 +52,38 @@ class ArticleEditStore extends StoreModule {
     })
   }
 
-  async putEditArticle(article){
-    const itemHeader = document.querySelector(".ArticleCardEdit-Name").value;
-    const itemDescr = document.querySelector(".ArticleCardEdit-Description").value;
-    article.title = itemHeader;
-    article.description = itemDescr;
-    console.log(itemHeader)
-    console.log(article)
-    const response2 = await fetch(`/api/v1/articles/${article._id}`,{
+  async putEditArticle(article,cat){
+    let itemHeader = document.querySelector(".ArticleCardEdit-Name").value;
+    let itemDescr = document.querySelector(".ArticleCardEdit-Description").value;
+    let itemYear = document.querySelector(".ArticleCardEdit-Value--Year").value;
+    let itemPrice = document.querySelector(".ArticleCardEdit-Value--Price").value;
+
+    let selectedCountry = document.querySelector(".SelectCategory-country").value;
+    let selectedCategory = document.querySelector(".SelectCategory-category").value;
+
+    let itemSelectedCounty = this.getState().countries.find((item)=>item._id===selectedCountry);
+    let itemSelectedCategory = cat.find((item)=>item._id===selectedCategory);
+
+    this.updateState({
+        editData:{...this.getState().data,
+        title:itemHeader,
+        description:itemDescr,
+          edition:itemYear,
+          price:itemPrice,
+          maidIn:itemSelectedCounty,
+          category:itemSelectedCategory
+      }
+    });
+    console.log(this.getState().editData);
+    let editedArticle = this.getState().editData;
+    const response = await fetch(`/api/v1/articles/${editedArticle._id}`,{
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(article)
+      body: JSON.stringify(editedArticle)
     });
-    const json = await response2.json();
+    const json = await response.json();
     console.log(json);
 
   }

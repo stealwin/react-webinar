@@ -120,7 +120,7 @@ function SelectCategory(props){
 
  // console.log(categoryTree(props.options));
   return (
-    <select className={className()} onChange={onSelect} value={props.value}>
+    <select className={className()+props.class} onChange={onSelect} value={props.value}>
       {!props.isEdit && <option value={1}>Все</option>}
       {props.options.map(item => (
         <option key={item._id} value={item._id}>{item.title}</option>
