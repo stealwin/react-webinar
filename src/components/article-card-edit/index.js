@@ -25,18 +25,12 @@ function ArticleCardEdit({article, onAdd,cat,count, sendEdit}) {
         <div>Страна производитель:</div>
         <div className={className('Label')}></div>
         <SelectCategory  options={count} isEdit = {isArticleEdit} class ="-country"></SelectCategory>
-       {/* <select className={className('Value')}>
-          <option>{article.maidIn?.title} </option>
-        </select>*/}
       </div>
 
       <div className={className('Prop')}>
         <div>Категория</div>
         <div className={className('Label')}></div>
         <SelectCategory options={cat} isEdit = {isArticleEdit} class ="-category"></SelectCategory>
-        {/*<select className={className('Value')}>
-          <option>{article.category?.title}</option>
-        </select>*/}
       </div>
 
       <div className={className('Prop')}>

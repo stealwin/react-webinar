@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo} from "react";
+import React, {useCallback, useEffect, useMemo} from "react";
 import useSelector from "../../utils/use-selector";
 import useStore from "../../utils/use-store";
 import Select from "../../components/select";
@@ -14,12 +14,18 @@ function CatalogFilter() {
   const select = useSelector(state => ({
     sort: state.catalog.params.sort,
     query: state.catalog.params.query,
-    categories:state.categories.items
+    categories:state.categories.items,
+    modifiedCategories:state.categories.modifiedItems
   }));
+  console.log(select.modifiedCategories);
 
   useInit(async () => {
     await store.categories.loadCategories();
   } );
+  useInit( () => {
+     store.categories.getFullTree(select.categories);
+  },[select.categories] );
+
 
   // Опции для полей
   const options = {
@@ -39,7 +45,7 @@ function CatalogFilter() {
 
   return (
     <LayoutTools>
-      <SelectCategory onChange={callbacks.onSort} value={select.sort} options={select.categories}></SelectCategory>
+      <SelectCategory onChange={callbacks.onSort} value={select.sort} options={select?.modifiedCategories}></SelectCategory>
       <Input onChange={callbacks.onSearch} value={select.query} placeholder={'Поиск'} theme="big"/>
       <label>Сортировка:</label>
       <Select onChange={callbacks.onSort} value={select.sort} options={options.sort}/>

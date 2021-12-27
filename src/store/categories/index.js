@@ -6,7 +6,8 @@ class CategoriesStore extends StoreModule{
    */
   initState() {
     return {
-      items:[]
+      items:[],
+      modifiedItems:[]
     }
   }
 
@@ -16,6 +17,33 @@ class CategoriesStore extends StoreModule{
     this.setState({
       items:jsonCategories.result.items
 
+    })
+  }
+
+  getFullTree (rootArray)  {
+    console.log(rootArray);
+    const getTree = (array, parent = null, inner = 0) => {
+      return array.reduce((arr, elem) => {
+        if (elem.parent && elem.parent._id !== parent) {
+          return arr;
+        }
+
+        arr.push({
+          ...elem,
+          title: `${'-'.repeat(inner)}${elem.title}`,
+        });
+
+        const children = rootArray.filter((item) => item.parent && item.parent._id === elem._id);
+        if(!children) {
+          return arr;
+        }
+        const childArr = getTree(children, elem._id, inner + 1);
+        return arr.concat(childArr);
+      }, []);
+    }
+    return this.setState({
+            ...this.getState(),
+           modifiedItems: getTree(rootArray)
     })
   }
 
